@@ -1,4 +1,3 @@
-
  let math_lesson = new Vue({
                 el: '#app',
                 data: {

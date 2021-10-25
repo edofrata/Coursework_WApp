@@ -1,6 +1,53 @@
-body{
+/* body styling */
+body {
 
-    background-color: blue;
+    background: lightblue;
+}
 
+/* title */
+
+.title {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -4%;
+    width: 35%;
+
+}
+
+/* box styling */
+
+.lesson_box {
+    position: fixed;
+    align-self: center;
+    width: 60%;
+    height: 600px;
+    top: 55%;
+    left: 50%;
+    margin-right: 50%;
+    margin-top: -17%;
+    /* this is half the height of your div*/
+    margin-left: -500px;
+    /*this is half of width of your div*/
+    border-radius: 25px;
+    background: white;
+
+}
+
+.lessons{
+
+    width: 20%;
+    height: 30%;
+    margin-left: 60px;
+    margin-top: 5%;
+
+}
+
+/* adjusting image for the lessons insertion */
+.lessons img{
+
+    width: 40%;
+    height: auto;
 
 }
