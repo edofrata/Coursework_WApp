@@ -10,26 +10,76 @@
     </head>
 
     <body>
+        <!-- background  -->
+        <div class="moon">
+            <div class="crater"></div>
+        </div>
+
+        <div class="footprints">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="astronaut">
+
+            <div class="backpack"></div>
+
+            <div class="head">
+                <div class="helmet"></div>
+            </div>
+
+            <div class="neck"></div>
+
+            <div class="body"></div>
+
+            <div class="arm right">
+                <div class="top"></div>
+                <div class="bot"></div>
+                <div class="hand"></div>
+            </div>
+
+            <div class="arm left">
+                <div class="top"></div>
+                <div class="bot"></div>
+                <div class="hand"></div>
+            </div>
+
+            <div class="leg right">
+                <div class="top"></div>
+                <div class="bot"></div>
+                <div class="foot"></div>
+            </div>
+
+            <div class="leg left">
+                <div class="top"></div>
+                <div class="bot"></div>
+                <div class="foot"></div>
+            </div>
+
+       
+        </div>
+       
+        <!-- div for the insertion -->
         <div id="app">
             <img class="title" v-bind:src="siteimage">
             <div class="lesson_box">
-
+                
                 <div class="lessons">
                     <img v-bind:src="product.image">
                     <h2 class="product_title" v-text="product.title"></h2>
-                    <p class="product_location">Location: {{product.location}}</p>
+                    <p class="product_location">Location:
+                        {{product.location}}</p>
                     <p class="product_price"> Price: £{{product.price}}</p>
                     <span v-html="btn_shop"></span>
                 </div>
-
-
             </div>
         </div>
         <script>
             let vueapp = new Vue({
                 el: '#app',
                 data: {
-                    siteimage: 'images/After_School_Lessons_Club.png',
+                    siteimage: 'images/After School Lessons Club-logos_transparent.png',
                     product: {
                         id: 3377,
                         title: 'Math',
