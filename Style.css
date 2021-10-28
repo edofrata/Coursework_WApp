@@ -25,9 +25,9 @@ body {
     width: 60%;
     height: 600px;
     top: 55%;
-    left: 50%;
+    left:900px;
     margin-right: 50%;
-    margin-top: -18%;
+    margin-top: -300px;
     /* this is half the height of your div*/
     margin-left: -500px;
     /*this is half of width of your div*/
