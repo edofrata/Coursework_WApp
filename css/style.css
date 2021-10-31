@@ -1,0 +1,57 @@
+/* body styling */
+body {
+
+    background: lightblue;
+}
+
+/* title */
+
+.title {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -3%;
+    width: 25%;
+
+
+}
+
+/* box styling */
+
+.lesson_box {
+    position: fixed;
+    align-self: center;
+    width: 60%;
+    height: 600px;
+    top: 55%;
+    left:50%;
+    
+    margin-top: -300px;
+    /* this is half the height of your div*/
+    margin-left: -450px;
+    /*this is half of width of your div*/
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.664);
+    z-index: 1000;
+
+}
+
+
+.lessons{
+
+    width: 20%;
+    height: 30%;
+    margin-left: 60px;
+    margin-top: 5%;
+
+}
+
+/* adjusting image for the lessons insertion */
+.lessons img{
+
+    width: 40%;
+    height: auto;
+
+}
+
