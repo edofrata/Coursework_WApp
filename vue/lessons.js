@@ -1,28 +1,50 @@
+// this will generate the lessons
+function lessons() {
 
-
-
-let lesson = document.getElementsByClassName("lessons");
-for(var i = 0; i < lesson.length; i++){
-
-    lesson[i].innerHTML += ` <img v-bind:src="product.image">
+    let lesson = document.getElementsByClassName("lessons");
+    for (var i = 0; i < lesson.length; i++) {
+        lesson[i].innerHTML += ` 
+    <img v-bind:src="product.image">
     <h2 class="product_title" v-text="product.title"></h2>
     <p class="product_location">Location:{{product.location}}</p>
-    <p class="product_price"> Price: £{{product.price}}</p>`;
+    <p class="product_price"> Price: £{{product.price}}</p>
+    <p class="product_space" >Spaces: {{product.spaces}}</p>
+    <button type="button" class="btn btn-primary" v-text="product.btn" v-on:click="AddToCart" v-if="canAddToCart"></button>
+    <button type="button" class="btn btn-primary" disabled="disabled" v-text="product.btn" v-else></button>`;
+    }
 }
-    
-let vueapp = new Vue({
+lessons();
+
+var vueapp = new Vue({
     el: '#app',
     data: {
         siteimage: 'images/After School Lessons Club-logos_transparent.png',
+        cart:[],
         product: {
-            id: '3377',
+            id: 3377,
             title: 'Math',
             location: 'London',
             price: 100,
             image: "images/maths.png",
-            btn_shop: "Add to Cart"
+            btn: 'Add To Cart',
+            spaces: 5,
 
         }
+    },
+    methods:{
+        AddToCart: function(){
+             this.cart.push(this.product.id); 
+             this.product.spaces--;
+            }
+    },
+
+    computed:{
+        cartItemCount: function(){
+            return this.cart.length || '';
+        },
+        canAddToCart: function(){
+            return this.product.spaces > 0;
+        } 
     }
 });
 // class Lessons {
