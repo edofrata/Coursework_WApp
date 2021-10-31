@@ -65,17 +65,26 @@
         <div id="app">
             <img class="title" v-bind:src="siteimage">
             <div class="lesson_box">
+                <div id="Math" class="lessons">
+                </div>
+
+                <div id= "english" class="lessons">
+                </div>
+
+                <div id="music" class="lessons">
+                </div>
+
+                <div id="football" class="lessons">
+                </div>
+
+                <div id="italian" class="lessons">
+                </div>
                 
-                <div class="lessons">
-                    <img v-bind:src="product.image">
-                    <h2 class="product_title" v-text="product.title"></h2>
-                    <p class="product_location">Location:
-                        {{product.location}}</p>
-                    <p class="product_price"> Price: £{{product.price}}</p>
-                    <span v-html="btn_shop"></span>
+                <div id="spanish" class="lessons">
                 </div>
             </div>
         </div>
         <script src="vue/lessons.js"></script>
+       
     </body>
 </html>
