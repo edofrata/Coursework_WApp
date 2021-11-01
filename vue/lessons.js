@@ -29,6 +29,16 @@ var vueapp = new Vue({
             btn: 'Add To Cart',
             spaces: 5,
 
+        },
+        product: {
+            id: 3377,
+            title: 'English',
+            location: 'London',
+            price: 100,
+            image: "images/maths.png",
+            btn: 'Add To Cart',
+            spaces: 5,
+
         }
     },
     methods:{

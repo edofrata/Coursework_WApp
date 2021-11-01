@@ -7,8 +7,13 @@
         <script src="https://unpkg.com/vue"></script>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/moon_walk.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -59,33 +64,87 @@
                 <div class="foot"></div>
             </div>
 
-       
+
         </div>
-       
+
         <!-- div for the insertion -->
         <div id="app">
             <img class="title" v-bind:src="siteimage">
+
             <div class="lesson_box">
-                <div id="Math" class="lessons text">
-                </div>
+                <div class="container wrapper">
+                    <div class="row">
+                        <div id="carousel-lessons" class="carousel slide"
+                            data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators hidden-xs">
+                                <li data-target="#carousel-lessons" data-slide-to="0"
+                                    class="active"></li>
+                                <li data-target="#carousel-lessons" data-slide-to="1"></li>
+                            </ol>
 
-                <div id= "english" class="lessons">
-                </div>
+                            <div class="carousel-inner hidden-xs"
+                                role="listbox">
+                                <div class="item active">
+                                    <div class="row">
+                                        <div id="math" class="lessons">
+                                        </div>
 
-                <div id="music" class="lessons">
-                </div>
+                                        <div id="english" class="lessons">
+                                        </div>
 
-                <div id="football" class="lessons">
-                </div>
+                                        <div id="music" class="lessons">
+                                        </div>
 
-                <div id="italian" class="lessons">
-                </div>
+                                        <div id="football" class="lessons">
+                                        </div>
 
-                <div id="spanish" class="lessons">
+                                        <div id="italian" class="lessons">
+                                        </div>
+
+                                        <div id="spanish" class="lessons">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="row">
+                                        <div id="lesson7" class="lessons">
+                                        </div>
+
+                                        <div id="lesson8" class="lessons">
+                                        </div>
+
+                                        <div id="lesson9" class="lessons">
+                                        </div>
+
+                                        <div id="lesson10" class="lessons">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <a href="#carousel-lessons" class="left carousel-control"
+                                role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"
+                                    aria-hidden="true"></span>
+
+                            </a>
+                            <a href="#carousel-lessons" class="right carousel-control"
+                                role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"
+                                    aria-hidden="true"></span>
+
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <script src="vue/lessons.js"></script>
-       
+
+
+
     </body>
 </html>
