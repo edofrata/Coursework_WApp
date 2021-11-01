@@ -41,17 +41,28 @@ body {
 
 	display: inline-block;
     width:300px;
-    height: 150px;
-	margin : 80px 10px 50px 50px;
+    height: 200px;
+	margin : 70px 10px 50px 43px;
+	border: 5px solid black;
+	border-radius: 20px;
 
 }
 
 /* adjusting image for the lessons insertion */
 .lessons img{
-
+	position: absolute;
     width: 100px;
     height: auto;
-
-
+	margin-left: 180px;
+	margin-top: 10px;
 }
 
+.product{
+	margin-left: 15px;
+	margin-top:10px;
+
+}
+.btn{
+
+	margin-left: 180px;
+}

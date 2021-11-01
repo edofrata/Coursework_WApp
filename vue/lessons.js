@@ -5,10 +5,10 @@ function lessons() {
     for (var i = 0; i < lesson.length; i++) {
         lesson[i].innerHTML += ` 
     <img v-bind:src="product.image">
-    <h2 class="product_title" v-text="product.title"></h2>
-    <p class="product_location">Location:{{product.location}}</p>
-    <p class="product_price"> Price: £{{product.price}}</p>
-    <p class="product_space" >Spaces: {{product.spaces}}</p>
+    <h2 class="product product_title" v-text="product.title"></h2>
+    <p class="product product_location">Location:{{product.location}}</p>
+    <p class="product product_price"> Price: £{{product.price}}</p>
+    <p class="product product_space" >Spaces: {{product.spaces}}</p>
     <button type="button" class="btn btn-primary" v-text="product.btn" v-on:click="AddToCart" v-if="canAddToCart"></button>
     <button type="button" class="btn btn-primary" disabled="disabled" v-text="product.btn" v-else></button>`;
     }
