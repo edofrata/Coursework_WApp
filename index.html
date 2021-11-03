@@ -87,63 +87,50 @@
                                 role="listbox">
                                 <div class="item active">
                                     <div class="row">
-                                        <div id="math" class="lessons">
-                                        </div>
-
-                                        <div id="english" class="lessons">
-                                        </div>
-
-                                        <div id="music" class="lessons">
-                                        </div>
-
-                                        <div id="football" class="lessons">
-                                        </div>
-
-                                        <div id="italian" class="lessons">
-                                        </div>
-
-                                        <div id="spanish" class="lessons">
+                                        <div class="lessons" v-for="index in 6" :key="index" >
+                                            <img v-bind:src="product[index - 1].image">
+                                            <h2 class="product product_title" v-text="product[index - 1].title"></h2>
+                                            <p class="product product_location">Location: {{product[index - 1].location}}</p>
+                                            <p class="product product_price">Price: £{{product[index - 1].price}}</p>
+                                            <p class="product product_space" >Spaces: {{product[index - 1].spaces}}</p>
+                                            <button type="button" class="btn btn-primary" v-on:click="AddToCart([index -1])" :disabled="!canAddToCart([index-1])">Add To Cart</button>
+                                            <!-- <button type="button" class="btn btn-primary" disabled="disabled" v-else>Add To Cart</button> -->
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="item">
                                     <div class="row">
-                                        <div id="lesson7" class="lessons">
-                                        </div>
-
-                                        <div id="lesson8" class="lessons">
-                                        </div>
-
-                                        <div id="lesson9" class="lessons">
-                                        </div>
-
-                                        <div id="lesson10" class="lessons">
+                                        <div class="lessons" v-for="index in 4" :key="index" >
+                                            <img v-bind:src="product[index + 5].image">
+                                            <h2 class="product product_title" v-text="product[index + 5].title"></h2>
+                                            <p class="product product_location">Location: {{product[index + 5].location}}</p>
+                                            <p class="product product_price">Price: £{{product[index+5].price}}</p>
+                                            <p class="product product_space" >Spaces: {{product[index + 5].spaces}}</p>
+                                            <button type="button" class="btn btn-primary" v-on:click="AddToCart([index + 5])" :disabled="!canAddToCart([index + 5])">Add To Cart</button>
+                                            <!-- <button type="button" class="btn btn-primary" disabled="disabled" v-else>Add To Cart</button> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Controls -->
                             <a href="#carousel-lessons" class="left carousel-control"
                                 role="button" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"
                                     aria-hidden="true"></span>
-
                             </a>
                             <a href="#carousel-lessons" class="right carousel-control"
                                 role="button" data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right"
                                     aria-hidden="true"></span>
-
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="vue/lessons.js"></script>
-
+        <script src="js/lessons.js"></script>
+        <script src="js/util.js"></script>
 
 
     </body>
