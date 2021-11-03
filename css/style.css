@@ -58,7 +58,12 @@
 .btn{
 	margin-left: 180px;
 }
+.btn-sort{
 
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-top:5px;
+}
 /* Carousel arrows */
 .carousel-control.right{
 	
@@ -75,6 +80,7 @@
 .row {
   height: auto;
   width: 1100px;
+  margin-top: -15px;
 }
 .carousel-indicators{
 
