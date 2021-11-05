@@ -12,9 +12,9 @@ var vueapp = new Vue({
             { location: "Location" },
             { price: "Price" },
             { spaces: "Availability" }],
-        order:{
+        order: {
             full_name: '',
-            phone_number:'',
+            phone_number: '',
         }
     },
     methods: {
@@ -28,7 +28,7 @@ var vueapp = new Vue({
             return canAddToCart = this.product[item].spaces > 0 ? true : false;
         },
         // show the product page
-        show_checkout(){
+        show_checkout() {
             this.show_products = this.show_products ? false : true;
         },
         // sorting array function
@@ -44,6 +44,28 @@ var vueapp = new Vue({
             }
             // reloads root of vue
             vueapp.$forceUpdate();
+        },
+        // function that counts the same item in the cart
+        item_count(index) {
+            count = 1;
+            for (var i = 0; i < this.cart.length; i++) {
+                for (var k = (i + 1); k < this.cart.length; k++) {
+                    if (this.cart[i].title === this.cart[k].title) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        },
+        //item remove and adds back the items
+        item_remove(item) {
+            console.log(item);
+            for (var i = 0; i < this.product.length; i++) {
+                if (this.product[i].id === this.cart[item].id ) {
+                    this.product[i].spaces++;
+                }
+            }
+            this.cart.splice(item, 1);
         }
     },
     computed: {
@@ -52,3 +74,10 @@ var vueapp = new Vue({
         }
     }
 });
+
+// function that removes an item from an array
+Array.prototype.remove = function (from, to) {
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
+};

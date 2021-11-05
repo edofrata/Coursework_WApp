@@ -75,12 +75,12 @@
             <div class="lesson_box">
             
                 
-                <!-- sort button     -->
-                
+              
                 <!-- checkout button -->
                   <button type="button" class="btn-checkout btn-primary" v-on:click="show_checkout" > {{cartItemCount}} <img class="checkout-img" src="images/order.png"></button>
 
                   <div v-if="show_products">
+                        <!-- sort button     -->
                     <div class="btn-group">
                         <button type="button" class="btn-sort btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Sort By
@@ -231,13 +231,13 @@
                                 role="listbox">
                                 <div class="item active">
                                     <div class="row checkout">
-                                        <div class="lessons" v-for="index in 3" :key="index">
-                                            <img v-bind:src="product[index - 1].image">
-                                            <h2 class="product product_title" v-text="product[index - 1].title"></h2>
-                                            <p class="product product_location">Location: {{product[index - 1].location}}</p>
-                                            <p class="product product_price">Price: £{{product[index - 1].price}}</p>
-                                            <p class="product product_space" v-bind="product.spaces" >Spaces: {{product[index - 1].spaces}}</p>
-                                            <button type="button" class="btn-remove btn-danger" v-on:click="AddToCart([index -1])" :disabled="!canAddToCart([index-1])">Remove</button>
+                                        <div class="lessons" v-for="(carts, index) in cart" :key="carts">
+                                            <img v-bind:src="carts.image">
+                                            <h2 class="product product_title" v-text="carts.title"></h2>
+                                            <p class="product product_location">Location: {{carts.location}}</p>
+                                            <p class="product product_price">Price: £{{carts.price}}</p>
+                                            <p class="product product_space" v-bind="item_count(carts)" >Booked: {{item_count(carts)}}</p>
+                                            <button type="button" class="btn-remove btn-danger" v-on:click="item_remove(index)">Remove</button>
                                         </div>
                                     </div>
                                 </div>
@@ -262,8 +262,6 @@
 
                                     </div>
                                 </div> -->
-
-                                
                             </div>
                              <!-- Controls -->
                              <a href="#carousel-checkout" class="left carousel-control"
