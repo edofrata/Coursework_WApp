@@ -20,7 +20,7 @@ var vueapp = new Vue({
     methods: {
         // adds the product to the cart
         AddToCart: function (item) {
-            this.cart.push(this.product[item].id);
+            this.cart.push(this.product[item]);
             this.product[item].spaces--;
         },
         //return true or false if there are still items available
