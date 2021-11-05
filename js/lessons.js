@@ -5,7 +5,8 @@ const math =
     "location": "Canada Water",
     "price":100,
     "image":"images/maths.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const english = 
@@ -15,7 +16,8 @@ const english =
     "location": "Hendon",
     "price":90,
     "image":"images/english.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const computer_science = 
@@ -25,7 +27,8 @@ const computer_science =
     "location": "Barnet",
     "price":130,
     "image":"images/binary-code.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const music = 
@@ -35,7 +38,8 @@ const music =
     "location": "Camden",
     "price":80,
     "image":"images/music-notes.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const italian = 
@@ -45,7 +49,8 @@ const italian =
     "location": "Tottenham",
     "price":80,
     "image":"images/italian.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const spanish = 
@@ -55,7 +60,8 @@ const spanish =
     "location": "Ealing",
     "price":70,
     "image":"images/spanish-language.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const geography = 
@@ -65,7 +71,8 @@ const geography =
     "location": "Enfield",
     "price":90,
     "image":"images/geography.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const chemistry = 
@@ -75,7 +82,8 @@ const chemistry =
     "location": "Leicester Square",
     "price":115,
     "image":"images/chemistry.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const biology = 
@@ -85,7 +93,8 @@ const biology =
     "location": "South Kensington",
     "price":110,
     "image":"images/biology.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 const physics = 
@@ -95,7 +104,8 @@ const physics =
     "location": "Chelsea",
     "price":150,
     "image":"images/physics.png",
-    "spaces":5
+    "spaces":5,
+    "booking":0
 }
 
 

@@ -22,6 +22,7 @@ var vueapp = new Vue({
         AddToCart: function (item) {
             this.cart.push(this.product[item]);
             this.product[item].spaces--;
+            this.product[item].booking++;
         },
         //return true or false if there are still items available
         canAddToCart: function (item) {
@@ -47,37 +48,48 @@ var vueapp = new Vue({
         },
         // function that counts the same item in the cart
         item_count(index) {
-            count = 1;
-            for (var i = 0; i < this.cart.length; i++) {
-                for (var k = (i + 1); k < this.cart.length; k++) {
-                    if (this.cart[i].title === this.cart[k].title) {
-                        count++;
+            if (this.cart.length > 1) {
+                for (var k = 0; k < this.cart.length; k++) {
+                    for (var j = (k + 1); j < this.cart.length; j++) {
+                        if (this.cart[k].id === this.cart[j].id) {
+                            this.cart.splice(j, 1);
+                        }
                     }
+
                 }
             }
-            return count;
+            for (var i = 0; i < this.product.length; i++) {
+                if (this.cart[index].title === this.product[i].title) {
+                    return this.product[i].booking;
+                }
+            }
+
+
         },
         //item remove and adds back the items
         item_remove(item) {
-            console.log(item);
             for (var i = 0; i < this.product.length; i++) {
-                if (this.product[i].id === this.cart[item].id ) {
+                if (this.product[i].id === this.cart[item].id) {
                     this.product[i].spaces++;
+                    this.product[i].booking--;
+                    if (this.product[i].booking <= 0) {
+                        this.cart.splice(item, 1);
+                    }
+
                 }
             }
-            this.cart.splice(item, 1);
+
+        },
+        cartItemCount: function () {
+            let sum = 0;
+            for (let i = 0; i < this.product.length; i++) {
+
+                sum += this.product[i].booking;
+            }
+            return sum;
         }
     },
     computed: {
-        cartItemCount: function () {
-            return this.cart.length || 0;
-        }
+      
     }
 });
-
-// function that removes an item from an array
-Array.prototype.remove = function (from, to) {
-    var rest = this.slice((to || from) + 1 || this.length);
-    this.length = from < 0 ? this.length + from : from;
-    return this.push.apply(this, rest);
-};
