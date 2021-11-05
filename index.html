@@ -72,8 +72,11 @@
             <img class="title" v-bind:src="siteimage">
 
             <div class="lesson_box">
+            
+                
+                <!-- sort button     -->
                 <div class="btn-group">
-                    <button type="button" class="btn-sort btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn-sort btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Sort By
                     </button>
                     <div class="dropdown-menu">
@@ -82,6 +85,10 @@
                     </template>
                     </div>
                   </div>
+                <!-- checkout button -->
+                  <button type="button" class="btn-checkout btn-primary" v-on:click="show_checkout" > {{cartItemCount}} <img class="checkout-img" src="images/order.png"></button>
+
+                  <div v-if="show_products">
                 <div class="container wrapper">
                     <div class="row">
                         <div id="carousel-lessons" class="carousel slide"
@@ -137,11 +144,87 @@
                         </div>
                     </div>
                 </div>
+                </div>
+            <!-- Checkout page -->
+                <div v-else>
+                    <div class="container wrapper">
+                        <div class="row">
+                            <div id="carousel-checkout" class="carousel slide"
+                                data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators hidden-xs">
+                                    <li data-target="#carousel-checkout" data-slide-to="0"
+                                        class="active"></li>
+                                    <li data-target="#carousel-checkout" data-slide-to="1"></li>
+                                </ol>
+                                <div class="carousel-inner hidden-xs"
+                                role="listbox">
+                                <div class="item active">
+                                    <div class="row checkout">
+                                        <div class="lessons" v-for="index in 3" :key="index">
+                                            <img v-bind:src="product[index - 1].image">
+                                            <h2 class="product product_title" v-text="product[index - 1].title"></h2>
+                                            <p class="product product_location">Location: {{product[index - 1].location}}</p>
+                                            <p class="product product_price">Price: £{{product[index - 1].price}}</p>
+                                            <p class="product product_space" v-bind="product.spaces" >Spaces: {{product[index - 1].spaces}}</p>
+                                            <button type="button" class="btn-remove btn-danger" v-on:click="AddToCart([index -1])" :disabled="!canAddToCart([index-1])">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="item">
+                                    <div class="row">
+
+
+
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="row">
+
+
+
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="row">
+
+
+
+                                    </div>
+                                </div> -->
+
+                                
+                            </div>
+                             <!-- Controls -->
+                             <a href="#carousel-checkout" class="left carousel-control"
+                             role="button" data-slide="prev">
+                             <span class="glyphicon glyphicon-chevron-left"
+                                 aria-hidden="true"></span>
+                         </a>
+                         <a href="#carousel-checkout" class="right carousel-control"
+                             role="button" data-slide="next">
+                             <span class="glyphicon glyphicon-chevron-right"
+                                 aria-hidden="true"></span>
+                         </a>
+                     </div>
+                 </div>
+             </div>
+
+             <div class="customer-checkout">
+                <h2> Order Information </h2>
+                <p class="order_details"><strong>Full Name</strong></p>
+                <input class="order_input" v-model="order.full_name"/>
+                <p class="order_details"><strong>Phone Number</strong></p>
+                <input class="order_input" v-model="order.phone_number"/>
+                <button type="button" id="btn-submit" class="btn btn-success">Submit Order</button>
+            </div>
+
+                </div>
             </div>
         </div>
         <script src="js/lessons.js"></script>
         <script src="js/util.js"></script>
 
-
+        
     </body>
 </html>

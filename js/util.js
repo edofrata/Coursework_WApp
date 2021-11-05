@@ -2,6 +2,7 @@ var vueapp = new Vue({
     el: '#app',
     data: {
         siteimage: 'images/After School Lessons Club-logos_transparent.png',
+        show_products: true,
         cart: [],
         product: [math, english, computer_science,
             music, italian, spanish,
@@ -10,16 +11,25 @@ var vueapp = new Vue({
             { title: "Subject" },
             { location: "Location" },
             { price: "Price" },
-            { spaces: "Availability" }]
+            { spaces: "Availability" }],
+        order:{
+            full_name: '',
+            phone_number:'',
+        }
     },
     methods: {
+        // adds the product to the cart
         AddToCart: function (item) {
             this.cart.push(this.product[item].id);
             this.product[item].spaces--;
         },
-
+        //return true or false if there are still items available
         canAddToCart: function (item) {
             return canAddToCart = this.product[item].spaces > 0 ? true : false;
+        },
+        // show the product page
+        show_checkout(){
+            this.show_products = this.show_products ? false : true;
         },
         // sorting array function
         sort_products: function (sort) {
@@ -32,12 +42,13 @@ var vueapp = new Vue({
                     }
                 }
             }
+            // reloads root of vue
+            vueapp.$forceUpdate();
         }
     },
-
     computed: {
         cartItemCount: function () {
-            return this.cart.length || '';
+            return this.cart.length || 0;
         }
     }
 });
