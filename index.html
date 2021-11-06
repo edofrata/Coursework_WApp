@@ -219,15 +219,10 @@
                             </div>
                     </div>
                 <!-- ELSE This will show if there is something in the shopping cart -->
-                
-
-
-
-
                     <div v-else>
+                            <p class ="price" v-bind:price="shopping_price"><strong>TOTAL: £{{shopping_price()}} </strong></p>
                         <div class="shopping-list">
-                            
-                           <div class="lessons" v-for="(carts, index) in cart" >
+                           <div class="lessons cart" v-for="(carts, index) in cart" >
                                 <img v-bind:src="carts.image">
                              <div class ="lesson-details">
                                 <h2 class="product product_title" v-text="carts.title"></h2>

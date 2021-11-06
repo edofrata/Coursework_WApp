@@ -40,12 +40,16 @@
 	border-radius: 20px;
 
 }
+.cart{
+	margin : 20px 10px 50px 50px !important;
 
+}
 .shopping-list{
 
     width:1100px;
-    height:300px;
+    height:250px;
     overflow-y:scroll;
+    margin: 45px 0px 0px -10px;
 }
 /* adjusting image for the lessons insertion */
 .lessons img{
@@ -89,7 +93,14 @@
     text-align: center;
   }
 
-
+.price{
+  position: fixed;
+  width: 180px;
+  height:50px;
+  margin: -35px 0px 0px 480px;
+  font-size:25px;
+  
+}
 
 /* ------BUTTONS -------------- */
 .btn-group{
@@ -142,7 +153,7 @@ border-radius: 10px;
 
 .carousel-indicators{
 	bottom:-10px !important;
-    margin: 0px 0px 20px -380px !important;
+    margin: 0px 0px 20px -325px !important;
 }
 /* END CAROUSEL */
 

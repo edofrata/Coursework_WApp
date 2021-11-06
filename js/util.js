@@ -86,6 +86,13 @@ var vueapp = new Vue({
                 sum += this.product[i].booking;
             }
             return sum;
+        },
+        shopping_price(){
+            let price = 0;
+            for(var i=0; i < this.product.length; i++){
+                price += (this.product[i].booking * this.product[i].price);
+            }
+            return price;
         }
     },
     computed: {
