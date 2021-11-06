@@ -41,9 +41,15 @@
 
 }
 
+.shopping-list{
+
+    width:1100px;
+    height:300px;
+    overflow-y:scroll;
+}
 /* adjusting image for the lessons insertion */
 .lessons img{
-	position: absolute;
+	position:relative;
     width: 100px;
     height: auto;
 	margin-left: 180px;
@@ -55,14 +61,17 @@
 	margin-top:10px;
 
 }
+.lesson-details{
 
+    margin: -110px 0px 0px 0px;
+}
 .checkout-img{
     max-width:25px;
 }
 
 .customer-checkout{
     height:300px;
-    margin: 60px 0px 0px 413px;
+    margin: 55px -60px 0px 440px;
 }
 
 .order_details{
@@ -73,9 +82,7 @@
 .order_input{
     margin: 0 0 0 40px;
 }
-#btn-submit{
-    margin: 0px 0px -100px -135px;
-}
+
 .empty-cart {
     width: 650px;
     margin: 40px 0px 0px 240px;
@@ -111,7 +118,9 @@ border-radius: 10px;
     z-index: 10;
     }
 
-
+#btn-submit{
+        margin: 0px 0px -100px -139px;
+}
 /* Carousel arrows */
 .carousel-control.right{
 	
@@ -129,15 +138,6 @@ border-radius: 10px;
   height: 620px;
   width: 1100px;
   margin-top: -18px;
-}
-.checkout.right.carousel-control{
-
-    margin: 0px 47px 0px 0px !important;
-}
-.checkout{
-    height:300px !important;
-    width:1100px;
-    margin :0px 0px 10px -20px !important;
 }
 
 .carousel-indicators{

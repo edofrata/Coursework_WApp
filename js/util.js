@@ -63,17 +63,16 @@ var vueapp = new Vue({
                     return this.product[i].booking;
                 }
             }
-
-
         },
         //item remove and adds back the items
         item_remove(item) {
             for (var i = 0; i < this.product.length; i++) {
                 if (this.product[i].id === this.cart[item].id) {
-                    this.product[i].spaces++;
                     this.product[i].booking--;
+                    this.product[i].spaces++;
                     if (this.product[i].booking <= 0) {
                         this.cart.splice(item, 1);
+                        break;
                     }
 
                 }

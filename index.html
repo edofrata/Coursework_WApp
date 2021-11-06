@@ -115,13 +115,15 @@
                                         <template v-model="product">
                                         <div class="lessons" v-for="index in 6" :key="index">
                                             <img v-bind:src="product[index - 1].image">
+                                            <div class ="lesson-details">
                                             <h2 class="product product_title" v-text="product[index - 1].title"></h2>
                                             <p class="product product_location">Location: {{product[index - 1].location}}</p>
                                             <p class="product product_price">Price: £{{product[index - 1].price}}</p>
                                             <p class="product product_space" v-bind="product.spaces" >Spaces: {{product[index - 1].spaces}}</p>
                                             <button type="button" class="btn btn-primary" v-on:click="AddToCart([index -1])" :disabled="!canAddToCart([index-1])">Add To Cart</button>
+                                         </div>
                                         </div>
-                                    </template>
+                                        </template>
                                     </div>
                                 </div>
 
@@ -129,11 +131,13 @@
                                     <div class="row">
                                         <div class="lessons" v-for="index in (product.length - 6)" :key="index" >
                                             <img v-bind:src="product[index + 5].image">
+                                            <div class ="lesson-details">
                                             <h2 class="product product_title" v-text="product[index + 5].title"></h2>
                                             <p class="product product_location">Location: {{product[index + 5].location}}</p>
                                             <p class="product product_price">Price: £{{product[index+5].price}}</p>
                                             <p class="product product_space" >Spaces: {{product[index + 5].spaces}}</p>
                                             <button type="button" class="btn btn-primary" v-on:click="AddToCart([index + 5])" :disabled="!canAddToCart([index + 5])">Add To Cart</button>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -215,89 +219,37 @@
                             </div>
                     </div>
                 <!-- ELSE This will show if there is something in the shopping cart -->
-                    <div class="container wrapper" v-else>
-                        <div>
-                            <div id="carousel-checkout" class="carousel slide"
-                                data-ride="carousel">
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators hidden-xs">
-                                    <li data-target="#carousel-checkout" data-slide-to="0"
-                                        class="active"></li>
-                                    <li data-target="#carousel-checkout" data-slide-to="1"></li>
-                                </ol>
-                                <div class="carousel-inner hidden-xs"
-                                role="listbox">
-                                <div class="item active">
-                                 <div class="checkout">
-                                    <template v-if="cart.length <= 3">
-                                        <div class="lessons" v-for="(carts, index) in cart">
-                                            <img v-bind:src="carts.image">
-                                            <h2 class="product product_title" v-text="carts.title"></h2>
-                                            <p class="product product_location">Location: {{carts.location}}</p>
-                                            <p class="product product_price">Price: £{{carts.price}}</p>
-                                            <p class="product product_space" >Booked: {{item_count(index)}}</p>
-                                            <button type="button" class="btn-remove btn-danger" v-on:click="item_remove(index)">Remove</button>
-                                        </div>
-                                    </template>
-
-                                    <template v-else>
-                                        <template v-for="index in 3">
-                                            <div class="item">
-                                                <div class="row">
-                                                    <div class="lessons" v-for="index in 3">
-                                                        <img v-bind:src="cart[index-1].image">
-                                                        <h2 class="product product_title" v-text="cart[index-1].title"></h2>
-                                                        <p class="product product_location">Location: {{cart[index-1].location}}</p>
-                                                        <p class="product product_price">Price: £{{cart[index-1].price}}</p>
-                                                        <p class="product product_space" >Booked: {{item_count(index - 1)}}</p>
-                                                        <button type="button" class="btn-remove btn-danger" v-on:click="item_remove(index - 1)">Remove</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </template>
-                                    </template>
-                                 </div>
-                                </div>
-                                
-                               <!--- <div class="item">
-                                    <div class="row">
+                
 
 
 
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="row">
 
-
-
-                                    </div>
-                                </div> -->
+                    <div v-else>
+                        <div class="shopping-list">
+                            
+                           <div class="lessons" v-for="(carts, index) in cart" >
+                                <img v-bind:src="carts.image">
+                             <div class ="lesson-details">
+                                <h2 class="product product_title" v-text="carts.title"></h2>
+                                <p class="product product_location">Location: {{carts.location}}</p>
+                                <p class="product product_price">Price: £{{carts.price}}</p>
+                                <p class="product product_space" >Booked: {{item_count(index)}}</p>
+                                <button type="button" class="btn-remove btn-danger" v-on:click="item_remove(index)">Remove</button>
+                             </div>
                             </div>
-                             <!-- Controls -->
-                         <a href="#carousel-checkout" class="checkout left carousel-control"
-                             role="button" data-slide="prev">
-                             <span class="glyphicon glyphicon-chevron-left"
-                                 aria-hidden="true"></span>
-                         </a>
-                         <a href="#carousel-checkout" class="checkout right carousel-control"
-                             role="button" data-slide="next">
-                             <span class="glyphicon glyphicon-chevron-right"
-                                 aria-hidden="true"></span>
-                         </a>
-                     </div>
-                 </div>
-                 <div class="customer-checkout">
-                    <h2> Order Information </h2>
-                    <p class="order_details"><strong>Full Name</strong></p>
-                    <input class="order_input" v-model="order.full_name"/>
-                    <p class="order_details"><strong>Phone Number</strong></p>
-                    <input class="order_input" v-model="order.phone_number"/>
-                    <button type="button" id="btn-submit" class="btn btn-success">Submit Order</button>
-                </div>
-    
-             </div>
+                            
 
+                        </div>
+                        <div class="customer-checkout">
+                            <h2> Order Information </h2>
+                             <p class="order_details"><strong>Full Name</strong></p>
+                            <input class="order_input" v-model="order.full_name"/>
+                            <p class="order_details"><strong>Phone Number</strong></p>
+                            <input class="order_input" v-model="order.phone_number"/>
+                            <button type="button" id="btn-submit" class="btn btn-success">Submit Order</button>
+                        </div>
+                    </div>
+                <!-- end of the first div else (Checkout Page) -->
              
                 </div>
             </div>
