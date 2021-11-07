@@ -3,7 +3,11 @@ var vueapp = new Vue({
     data: {
         siteimage: 'images/After School Lessons Club-logos_transparent.png',
         show_products: true,
+        search_On: false,
+        descending: false,
         cart: [],
+        search_lessons: '',
+        searches: [],
         product: [math, english, computer_science,
             music, italian, spanish,
             geography, chemistry, biology, physics],
@@ -32,11 +36,19 @@ var vueapp = new Vue({
         show_checkout() {
             this.show_products = this.show_products ? false : true;
         },
+        // descending order
+        descending_selected: function () {
+            this.descending = !this.descending ? true : false;
+        },
         // sorting array function
         sort_products: function (sort) {
+
             for (var i = 0; i < this.product.length; i++) {
                 for (var k = (i + 1); k < this.product.length; k++) {
-                    if (this.product[i][sort] > this.product[k][sort]) {
+                    let ascending = this.product[i][sort] > this.product[k][sort];
+                    let descending = this.product[i][sort] < this.product[k][sort];
+                    let bool = this.descending ? descending : ascending;
+                    if (bool) {
                         var holder = this.product[i];
                         this.product[i] = this.product[k];
                         this.product[k] = holder;
@@ -87,15 +99,34 @@ var vueapp = new Vue({
             }
             return sum;
         },
-        shopping_price(){
+        shopping_price() {
             let price = 0;
-            for(var i=0; i < this.product.length; i++){
+            for (var i = 0; i < this.product.length; i++) {
                 price += (this.product[i].booking * this.product[i].price);
             }
             return price;
+        },
+
+
+        // function for searching the word
+        searchOn: function () {
+
+            this.search_On = !this.search_On ? true : false;
+            console.log(this.search_On);
+        },
+        search_lesson() {
+
+            this.search.value.toLowerCase();
+            for (var i = 0; i < this.product.length; i++) {
+                if (this.search_lessons.match(this.product[i].title || this.product[i].location)) {
+
+                    this.product[i].push(this.searches);
+                }
+            }
         }
+
     },
     computed: {
-      
+
     }
 });

@@ -89,73 +89,49 @@
                         </template>
                         </div>
                       </div>
-                     
+                      <div class="descending-sort" v-on:click="descending_selected">
+                        <input type="checkbox" id="horns" name="horns">
+                        <label for="horns">Descending</label>
+                      </div>
+
                       <div class="search-box">
-                        <input class = "search-text" type="text" placeholder = "Search Anything">
+                        <input class = "search-text" v-on:click="searchOn" v-bind:search="search_lesson" type="text" placeholder = "Search Anything">
                       <a class = "search-btn">
                         <i class="fas fa-search"></i>
                       </a>
                       
                     </div>
-                <div class="container wrapper">
-                    <div class="row">
-                        <div id="carousel-lessons" class="carousel slide"
-                            data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators hidden-xs">
-                                <li data-target="#carousel-lessons" data-slide-to="0"
-                                    class="active"></li>
-                                <li data-target="#carousel-lessons" data-slide-to="1"></li>
-                            </ol>
-
-                            <div class="carousel-inner hidden-xs"
-                                role="listbox">
-                                <div class="item active">
-                                    <div class="row">
-                                        <template v-model="product">
-                                        <div class="lessons" v-for="index in 6" :key="index">
-                                            <img v-bind:src="product[index - 1].image">
-                                            <div class ="lesson-details">
-                                            <h2 class="product product_title" v-text="product[index - 1].title"></h2>
-                                            <p class="product product_location">Location: {{product[index - 1].location}}</p>
-                                            <p class="product product_price">Price: £{{product[index - 1].price}}</p>
-                                            <p class="product product_space" v-bind="product.spaces" >Spaces: {{product[index - 1].spaces}}</p>
-                                            <button type="button" class="btn btn-primary" v-on:click="AddToCart([index -1])" :disabled="!canAddToCart([index-1])">Add To Cart</button>
-                                         </div>
-                                        </div>
-                                        </template>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="lessons" v-for="index in (product.length - 6)" :key="index" >
-                                            <img v-bind:src="product[index + 5].image">
-                                            <div class ="lesson-details">
-                                            <h2 class="product product_title" v-text="product[index + 5].title"></h2>
-                                            <p class="product product_location">Location: {{product[index + 5].location}}</p>
-                                            <p class="product product_price">Price: £{{product[index+5].price}}</p>
-                                            <p class="product product_space" >Spaces: {{product[index + 5].spaces}}</p>
-                                            <button type="button" class="btn btn-primary" v-on:click="AddToCart([index + 5])" :disabled="!canAddToCart([index + 5])">Add To Cart</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <!-- <template v-if="search_On">
+                    <div class="lesson_display">
+                            <div class="lessons" v-for="(search, index) in searches" :key="index">
+                                <img v-bind:src="search.image">
+                                <div class ="lesson-details">
+                                <h2 class="product product_title" v-text="search.title"></h2>
+                                <p class="product product_location">Location:</p>
+                                <p class="product product_price">Price: £{{search.price}}</p>
+                                <p class="product product_space" v-bind="product.spaces" >Spaces: {{search.spaces}}</p>
+                                <button type="button" class="btn btn-primary" v-on:click="AddToCart(index)" :disabled="!canAddToCart(index)">Add To Cart</button>
+                             </div>
                             </div>
-                            <!-- Controls -->
-                            <a href="#carousel-lessons" class="left carousel-control"
-                                role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"
-                                    aria-hidden="true"></span>
-                            </a>
-                            <a href="#carousel-lessons" class="right carousel-control"
-                                role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"
-                                    aria-hidden="true"></span>
-                            </a>
+                     </div>
+                 </template>
+
+                 <template v-else> -->
+
+                    <div class="lesson_display">
+                        <div class="lessons" v-for="(products, index) in product" :key="index">
+                            <img v-bind:src="products.image">
+                            <div class ="lesson-details">
+                            <h2 class="product product_title" v-text="products.title"></h2>
+                            <p class="product product_location">Location: {{products.location}}</p>
+                            <p class="product product_price">Price: £{{products.price}}</p>
+                            <p class="product product_space" v-bind="product.spaces" >Spaces: {{products.spaces}}</p>
+                            <button type="button" class="btn btn-primary" v-on:click="AddToCart(index)" :disabled="!canAddToCart(index)">Add To Cart</button>
+                         </div>
                         </div>
-                    </div>
-                </div>
+                     </div>
+
+                 <!-- </template> -->
                 </div>
             <!-- Checkout page -->
                 <div v-else>

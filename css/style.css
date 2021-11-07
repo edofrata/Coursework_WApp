@@ -16,7 +16,7 @@
     position: fixed;
     align-self: center;
     width: 1100px;
-    height: 65%;
+    height: 630px;
     top: 55%;
     left:45%;
     margin-top: -290px;
@@ -33,12 +33,20 @@
 .lessons{
 
 	display: inline-block;
-    width:300px;
-    height: 200px;
-	margin : 60px 10px 50px 50px;
+  width:300px;
+  height: 200px;
+	margin : 20px 10px 50px 50px;
 	border: 5px solid black;
 	border-radius: 20px;
 
+}
+
+.lesson_display{
+
+  width:1100px;
+  height:550px;
+  overflow-y:scroll;
+  margin: 20px 0px 0px 0px;
 }
 .cart{
 	margin : 20px 10px 50px 50px !important;
@@ -102,6 +110,11 @@
   
 }
 
+.descending-sort{
+  position: fixed;
+  width:100px;
+  margin: -23px 0px 0px 125px;
+}
 /* ------BUTTONS -------------- */
 .btn-group{
     margin: 5px 0px 0px 0px !important;
@@ -115,6 +128,7 @@
     margin-left: 10px;
     margin-top:5px;
     width:100px;
+    z-index:1100;
 }
 .btn-remove{
 border-radius: 10px;
@@ -126,7 +140,7 @@ border-radius: 10px;
     left:1030px;
     margin-top:10px;
     border-radius: 10px;
-    z-index: 10;
+    z-index: 1003;
     }
 
 #btn-submit{
@@ -137,12 +151,14 @@ border-radius: 10px;
 	
 	right:-50px !important;
 	background-image: none !important;
+  z-index: 1001 !important;
 
 }
 .carousel-control.left{
 
 	left:-80px !important;
 	background-image: none !important;
+  z-index: 1001 !important;
 }
 .wrapper,
 .row {
@@ -162,7 +178,7 @@ border-radius: 10px;
 .search-box {
     position: absolute;
     top : 5%;
-    left: 50%;
+    left: 51%;
     transform: translate(-50%, -50%);
     background: #2f3640;
     height: 50px;
