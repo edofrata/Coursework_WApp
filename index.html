@@ -214,9 +214,9 @@
                         <div class="customer-checkout">
                             <h2> Order Information </h2>
                              <p class="order_details"><strong>Full Name</strong></p>
-                            <input class="order_input" v-model="order.full_name"/>
+                            <input id="name_checkout" onkeyup="check_name(this)" class="order_input" v-model="order.full_name"/>
                             <p class="order_details"><strong>Phone Number</strong></p>
-                            <input class="order_input" v-model="order.phone_number"/>
+                            <input id="phone_checkout" onkeyup="check_phone(this)" class="order_input" v-model="order.phone_number"/>
                             <button type="button" id="btn-submit" class="btn btn-success">Submit Order</button>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
         </div>
         <script src="js/lessons.js"></script>
         <script src="js/util.js"></script>
-
+        <script src="js/checkoutVal.js"></script>
         
     </body>
 </html>
