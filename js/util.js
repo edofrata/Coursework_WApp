@@ -91,6 +91,7 @@ var vueapp = new Vue({
             }
 
         },
+        // cart item copunt
         cartItemCount: function () {
             let sum = 0;
             for (let i = 0; i < this.product.length; i++) {
@@ -99,6 +100,7 @@ var vueapp = new Vue({
             }
             return sum;
         },
+        // price showing function
         shopping_price() {
             let price = 0;
             for (var i = 0; i < this.product.length; i++) {
@@ -108,21 +110,24 @@ var vueapp = new Vue({
         },
 
 
-        // function for searching the word
+    //  function which sets the search on
         searchOn: function () {
-
             this.search_On = !this.search_On ? true : false;
             console.log(this.search_On);
         },
+           // function for searching the word
         search_lesson() {
-
-            this.search.value.toLowerCase();
-            for (var i = 0; i < this.product.length; i++) {
-                if (this.search_lessons.match(this.product[i].title || this.product[i].location)) {
-
-                    this.product[i].push(this.searches);
+            
+            if(this.search_lessons !== ''){
+                console.log("I AM OPERATING")
+                this.search_lessons.toLowerCase();
+                for (var i = 0; i < this.product.length; i++) {
+                    if (this.search_lessons === this.product[i].title[i] || this.search_lessons === this.product[i].location[i]) {
+                        this.searches.push(this.product[i]);
+                    }
                 }
             }
+           
         }
 
     },
