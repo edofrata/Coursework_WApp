@@ -1,17 +1,17 @@
 
-function login_check(){
+function login_check() {
     let full_name = document.getElementById("name_checkout").value;
     let phone_number = document.getElementById("phone_checkout").value;
-    
+
     document.getElementById("name_checkout").style.backgroundColor = "#FFFFFF";
     document.getElementById("phone_checkout").style.backgroundColor = "#FFFFFF";
-    if(full_name == "" || full_name.length < 1 || !(check_name(full_name))){
+    if (full_name == "" || full_name.length < 1 || !(check_name(full_name))) {
 
         document.getElementById("name_checkout").style.backgroundColor = "#ff6e6c";
         alert("Make sure your name is correct");
     }
 
-    else if(phone_number == "" || phone_number.length < 11){
+    else if (phone_number == "" || phone_number.length < 11) {
 
         document.getElementById("phone_checkout").style.backgroundColor = "#ff6e6c";
         alert("Insert a Valid Phone Number");
@@ -26,6 +26,7 @@ function check_name(name) {
     return letters.test(name);
 
 }
+
 // checks the phone number to be only numbers
 function check_phone(phone) {
 
@@ -33,3 +34,4 @@ function check_phone(phone) {
     phone.value = phone.value.replace(digits, "");
 
 }
+

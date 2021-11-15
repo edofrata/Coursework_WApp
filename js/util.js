@@ -24,13 +24,29 @@ var vueapp = new Vue({
     methods: {
         // adds the product to the cart
         AddToCart: function (item) {
-            this.cart.push(this.product[item]);
-            this.product[item].spaces--;
-            this.product[item].booking++;
+            if (this.search_On) {
+                for (var i = 0; i < this.product.length; i++) {
+                    if (this.searches[item].id === this.product[i].id) {
+                        this.cart.push(this.product[i]);
+                        this.product[i].spaces--;
+                        this.product[i].booking++;
+                    }
+                }
+            } else {
+                this.cart.push(this.product[item]);
+                this.product[item].spaces--;
+                this.product[item].booking++;
+            }
+
         },
         //return true or false if there are still items available
         canAddToCart: function (item) {
-            return canAddToCart = this.product[item].spaces > 0 ? true : false;
+            if (this.search_On) {
+                return canAddToCart = this.searches[item].spaces > 0 ? true : false;
+            } else {
+                return canAddToCart = this.product[item].spaces > 0 ? true : false;
+            }
+
         },
         // show the product page
         show_checkout() {
@@ -59,17 +75,19 @@ var vueapp = new Vue({
             vueapp.$forceUpdate();
         },
         // function that counts the same item in the cart
-        item_count(index) {
-            if (this.cart.length > 1) {
-                for (var k = 0; k < this.cart.length; k++) {
-                    for (var j = (k + 1); j < this.cart.length; j++) {
-                        if (this.cart[k].id === this.cart[j].id) {
-                            this.cart.splice(j, 1);
+        check_doubles(array) {
+            if (array.length > 1) {
+                for (var k = 0; k < array.length; k++) {
+                    for (var j = (k + 1); j < array.length; j++) {
+                       if (array[k].id === array[j].id) {
+                            array.splice(j, 1);
                         }
                     }
-
                 }
             }
+        },
+        // retrieves number of bookings for the lesson
+        bookings(index) {
             for (var i = 0; i < this.product.length; i++) {
                 if (this.cart[index].title === this.product[i].title) {
                     return this.product[i].booking;
@@ -82,7 +100,7 @@ var vueapp = new Vue({
                 if (this.product[i].id === this.cart[item].id) {
                     this.product[i].booking--;
                     this.product[i].spaces++;
-                    if (this.product[i].booking <= 0) {
+                    if (this.product[i].booking < 1) {
                         this.cart.splice(item, 1);
                         break;
                     }
@@ -110,28 +128,41 @@ var vueapp = new Vue({
         },
 
 
-    //  function which sets the search on
+        // function which sets the search on
         searchOn: function () {
             this.search_On = !this.search_On ? true : false;
             console.log(this.search_On);
         },
-           // function for searching the word
-        search_lesson() {
-            
-            if(this.search_lessons !== ''){
-                console.log("I AM OPERATING")
-                this.search_lessons.toLowerCase();
-                for (var i = 0; i < this.product.length; i++) {
-                    if (this.search_lessons === this.product[i].title[i] || this.search_lessons === this.product[i].location[i]) {
-                        this.searches.push(this.product[i]);
-                    }
-                }
-            }
-           
-        }
 
     },
     computed: {
 
     }
 });
+
+function search_lesson() {
+
+    vueapp.searches = [];
+    if (vueapp.search_lessons !== '' && vueapp.search_lessons !== " ") {
+        for (var i = 0; i < vueapp.product.length; i++) {
+            console.log("I AM Operating")
+
+            if (vueapp.search_lessons.length < 2) {
+                for (var k = 0; k < (vueapp.product[i].title.length + vueapp.product[i].location.length); k++) {
+                    if (vueapp.search_lessons.toLowerCase() === vueapp.product[i].title.charAt(k).toLowerCase() ||
+                        vueapp.search_lessons.toLowerCase() === vueapp.product[i].location.charAt(k).toLowerCase()) {
+                        vueapp.searches.push(vueapp.product[i]);
+                    }
+
+                }
+
+            }
+            else {
+                if (vueapp.search_lessons.toLowerCase() === vueapp.product[i].title.substr(0, vueapp.search_lessons.length).toLowerCase() ||
+                    vueapp.search_lessons.toLowerCase() === vueapp.product[i].location.substr(0, vueapp.search_lessons.length).toLowerCase()) {
+                    vueapp.searches.push(vueapp.product[i]);
+                }
+            }
+        }
+    }
+}

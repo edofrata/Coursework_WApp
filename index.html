@@ -75,7 +75,7 @@
             <div class="lesson_box">
 
                 <!-- checkout button -->
-                  <button type="button" class="btn-checkout btn-primary" v-on:click="show_checkout" > {{cartItemCount()}} <img class="checkout-img" src="images/order.png"></button>
+                  <button type="button" class="btn-checkout btn-primary" v-on:click="show_checkout()" > {{cartItemCount(cart)}} <img class="checkout-img" src="images/order.png"></button>
 
                   <div v-if="show_products">
                         <!-- sort button     -->
@@ -95,7 +95,7 @@
                       </div>
 
                       <div class="search-box" v-on:click="searchOn">
-                        <input class = "search-text" v-on:click="search_lesson" v-model="search_lessons" type="text" placeholder = "Search Anything">
+                        <input class = "search-text" v-model="search_lessons"  onkeyup="search_lesson()" type="text" placeholder = "Search Anything">
                       <a class = "search-btn">
                         <i class="fas fa-search"></i>
                       </a>
@@ -108,7 +108,7 @@
                                 <h2 class="product product_title" v-text="search.title"></h2>
                                 <p class="product product_location">Location: {{search.location}}</p>
                                 <p class="product product_price">Price: £{{search.price}}</p>
-                                <p class="product product_space" v-bind="product.spaces" >Spaces: {{search.spaces}}</p>
+                                <p class="product product_space" v-bind="product.spaces" >Spaces: {{search.spaces}}{{check_doubles(searches)}}</p>
                                 <button type="button" class="btn btn-primary" v-on:click="AddToCart(index)" :disabled="!canAddToCart(index)">Add To Cart</button>
                              </div>
                             </div>
@@ -243,13 +243,13 @@
                     <div v-else>
                             <p class ="price" v-bind:price="shopping_price"><strong>TOTAL: £{{shopping_price()}} </strong></p>
                         <div class="shopping-list">
-                           <div class="lessons cart" v-for="(carts, index) in cart" >
+                           <div class="lessons cart" v-for="(carts, index) in cart">
                                 <img v-bind:src="carts.image">
                              <div class ="lesson-details">
                                 <h2 class="product product_title" v-text="carts.title"></h2>
                                 <p class="product product_location">Location: {{carts.location}}</p>
                                 <p class="product product_price">Price: £{{carts.price}}</p>
-                                <p class="product product_space" >Booked: {{item_count(index)}}</p>
+                                <p class="product product_space" >Booked: {{bookings(index)}}{{check_doubles(cart)}}</p>
                                 <button type="button" class="btn-remove btn-danger" v-on:click="item_remove(index)">Remove</button>
                              </div>
                             </div>
