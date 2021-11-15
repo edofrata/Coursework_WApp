@@ -16,9 +16,12 @@ var vueapp = new Vue({
             { location: "Location" },
             { price: "Price" },
             { spaces: "Availability" }],
+        orders_submitted: [],
         order: {
             full_name: '',
             phone_number: '',
+            price: '',
+            lessons_booked: [],
         }
     },
     methods: {
@@ -79,7 +82,7 @@ var vueapp = new Vue({
             if (array.length > 1) {
                 for (var k = 0; k < array.length; k++) {
                     for (var j = (k + 1); j < array.length; j++) {
-                       if (array[k].id === array[j].id) {
+                        if (array[k].id === array[j].id) {
                             array.splice(j, 1);
                         }
                     }
@@ -109,7 +112,7 @@ var vueapp = new Vue({
             }
 
         },
-        // cart item copunt
+        // cart item count
         cartItemCount: function () {
             let sum = 0;
             for (let i = 0; i < this.product.length; i++) {
@@ -133,7 +136,28 @@ var vueapp = new Vue({
             this.search_On = !this.search_On ? true : false;
             console.log(this.search_On);
         },
+        //submit order function 
+        submit_order() {
 
+            if (login_check()) {
+                
+                this.order.lessons_booked.push(this.cart);
+                this.order.price = this.shopping_price();
+                this.orders_submitted.push(JSON.stringify(this.order));
+                alert('SUCCESS! Your Order went through');
+                // clearing up all variables
+                this.order.full_name = '';
+                this.order.phone_number = '';
+                this.order.price = '';
+                this.order.lessons_booked = [];
+                this.cart = [];
+                this.show_checkout();
+            } else {
+
+                alert('ERROR! Something went wrong');
+
+            }
+        }
     },
     computed: {
 

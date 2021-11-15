@@ -262,7 +262,7 @@
                             <input id="name_checkout" onkeyup="check_name(this)" class="order_input" v-model="order.full_name"/>
                             <p class="order_details"><strong>Phone Number</strong></p>
                             <input id="phone_checkout" onkeyup="check_phone(this)" class="order_input" v-model="order.phone_number"/>
-                            <button type="button" id="btn-submit" onclick="login_check()" class="btn btn-success">Submit Order</button>
+                            <button type="button" id="btn-submit" v-on:click="submit_order" class="btn btn-success">Submit Order</button>
                         </div>
                     </div>
                 <!-- end of the first div else (Checkout Page) -->

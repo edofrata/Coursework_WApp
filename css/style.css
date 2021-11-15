@@ -92,7 +92,8 @@
     text-align: center;
 }
 .order_input{
-    margin: 0 0 0 40px;
+    border-radius: 5px;
+    margin: 0 0 0 40px;        
 }
 
 .empty-cart {

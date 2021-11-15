@@ -9,12 +9,17 @@ function login_check() {
 
         document.getElementById("name_checkout").style.backgroundColor = "#ff6e6c";
         alert("Make sure your name is correct");
+        return false;
     }
 
     else if (phone_number == "" || phone_number.length < 11) {
 
         document.getElementById("phone_checkout").style.backgroundColor = "#ff6e6c";
         alert("Insert a Valid Phone Number");
+        return false;
+    }else{
+
+        return true;
     }
 
 }
