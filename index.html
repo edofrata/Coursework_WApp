@@ -108,7 +108,7 @@
                                 <h2 class="product product_title" v-text="search.title"></h2>
                                 <p class="product product_location">Location: {{search.location}}</p>
                                 <p class="product product_price">Price: £{{search.price}}</p>
-                                <p class="product product_space" v-bind="product.spaces" >Spaces: {{search.spaces}}{{check_doubles(searches)}}</p>
+                                <p class="product product_space" v-bind="product.spaces" >Spaces: {{search.spaces}}</p>
                                 <button type="button" class="btn btn-primary" v-on:click="AddToCart(index)" :disabled="!canAddToCart(index)">Add To Cart</button>
                              </div>
                             </div>
@@ -249,7 +249,7 @@
                                 <h2 class="product product_title" v-text="carts.title"></h2>
                                 <p class="product product_location">Location: {{carts.location}}</p>
                                 <p class="product product_price">Price: £{{carts.price}}</p>
-                                <p class="product product_space" >Booked: {{bookings(index)}}{{check_doubles(cart)}}</p>
+                                <p class="product product_space" >Booked: {{bookings(index)}}</p>
                                 <button type="button" class="btn-remove btn-danger" v-on:click="item_remove(index)">Remove</button>
                              </div>
                             </div>
@@ -259,10 +259,11 @@
                         <div class="customer-checkout">
                             <h2> Order Information </h2>
                             <p class="order_details"><strong>Full Name</strong></p>
-                            <input id="name_checkout" onkeyup="check_name(this)" class="order_input" v-model="order.full_name"/>
+                            <input id="name_checkout" onkeyup="vueapp.check_name(this)" class="order_input" v-model="order.full_name"/>
                             <p class="order_details"><strong>Phone Number</strong></p>
-                            <input id="phone_checkout" onkeyup="check_phone(this)" class="order_input" v-model="order.phone_number"/>
-                            <button type="button" id="btn-submit" v-on:click="submit_order" class="btn btn-success">Submit Order</button>
+                            <input id="phone_checkout" onkeyup="vueapp.check_phone(this)" class="order_input" v-model="order.phone_number"/>
+                            <button type="button" id="btn-submit" v-on:click="submit_order" class="btn btn-success" :disabled="!check_name(order.full_name) || !check_phone(order.phone_number)">Submit Order</button>
+                            
                         </div>
                     </div>
                 <!-- end of the first div else (Checkout Page) -->

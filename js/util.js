@@ -29,18 +29,36 @@ var vueapp = new Vue({
         AddToCart: function (item) {
             if (this.search_On) {
                 for (var i = 0; i < this.product.length; i++) {
-                    if (this.searches[item].id === this.product[i].id) {
-                        this.cart.push(this.product[i]);
-                        this.product[i].spaces--;
-                        this.product[i].booking++;
+                    if (this.searches[item].id === this.product[i].id) { this.no_double(i); }
+                }
+            } else { this.no_double(item); }
+
+        },
+        // no_double for the cart
+        no_double(item) {
+
+            let count = 0;
+            // check the length of the cart, if 0 emans that it is empty
+            if (this.cart.length > 0) {
+                for (let i = 0; i < this.cart.length; i++) {
+                    // if the in the cart is equqal to the product sent means that it is already in the cart
+                    if (this.cart[i].id === this.product[item].id) {
+                        count++;
+                        this.product[item].spaces--;
+                        this.product[item].booking++;
                     }
+                }
+                // if the count is still 0 means no double was found and can add to the cart
+                if (count == 0) {
+                    this.cart.push(this.product[item]);
+                    this.product[item].spaces--;
+                    this.product[item].booking++;
                 }
             } else {
                 this.cart.push(this.product[item]);
                 this.product[item].spaces--;
                 this.product[item].booking++;
             }
-
         },
         //return true or false if there are still items available
         canAddToCart: function (item) {
@@ -77,18 +95,6 @@ var vueapp = new Vue({
             // reloads root of vue
             vueapp.$forceUpdate();
         },
-        // function that counts the same item in the cart
-        check_doubles(array) {
-            if (array.length > 1) {
-                for (var k = 0; k < array.length; k++) {
-                    for (var j = (k + 1); j < array.length; j++) {
-                        if (array[k].id === array[j].id) {
-                            array.splice(j, 1);
-                        }
-                    }
-                }
-            }
-        },
         // retrieves number of bookings for the lesson
         bookings(index) {
             for (var i = 0; i < this.product.length; i++) {
@@ -115,11 +121,14 @@ var vueapp = new Vue({
         // cart item count
         cartItemCount: function () {
             let sum = 0;
-            for (let i = 0; i < this.product.length; i++) {
+            if (this.cart.length > 0) {
+                for (let i = 0; i < this.product.length; i++) {
+                    sum += this.product[i].booking;
+                }
+                return sum;
 
-                sum += this.product[i].booking;
-            }
-            return sum;
+            } else { return sum; }
+
         },
         // price showing function
         shopping_price() {
@@ -136,11 +145,22 @@ var vueapp = new Vue({
             this.search_On = !this.search_On ? true : false;
             console.log(this.search_On);
         },
+
+        // checks the name to be only letters
+        check_name(name) {
+            var letters = new RegExp(/^[A-Za-z]+ [A-Za-z]+$/);
+            return letters.test(name);
+        },
+
+        // checks the phone number to be only numbers
+        check_phone(phone) {
+            var digits = new RegExp(/^[0-9]{11}/gi);
+            return digits.test(phone);
+        },
         //submit order function 
         submit_order() {
 
-            if (login_check()) {
-                
+            if (this.check_name(this.order.full_name) && this.check_phone(this.order.phone_number)) {
                 this.order.lessons_booked.push(this.cart);
                 this.order.price = this.shopping_price();
                 this.orders_submitted.push(JSON.stringify(this.order));
@@ -151,37 +171,40 @@ var vueapp = new Vue({
                 this.order.price = '';
                 this.order.lessons_booked = [];
                 this.cart = [];
+                // setting bookings back to 0
+                for (var i = 0; i < this.product.length; i++) {
+                    this.product[i].booking = 0;
+                }
                 this.show_checkout();
-            } else {
-
-                alert('ERROR! Something went wrong');
-
-            }
+            } else { alert('ERROR! Something went wrong'); }
         }
     },
-    computed: {
-
-    }
+    computed: {}
 });
 
+// function for searching 
 function search_lesson() {
-
     vueapp.searches = [];
+
     if (vueapp.search_lessons !== '' && vueapp.search_lessons !== " ") {
         for (var i = 0; i < vueapp.product.length; i++) {
-            console.log("I AM Operating")
-
+            let counter = 0;
             if (vueapp.search_lessons.length < 2) {
                 for (var k = 0; k < (vueapp.product[i].title.length + vueapp.product[i].location.length); k++) {
                     if (vueapp.search_lessons.toLowerCase() === vueapp.product[i].title.charAt(k).toLowerCase() ||
                         vueapp.search_lessons.toLowerCase() === vueapp.product[i].location.charAt(k).toLowerCase()) {
-                        vueapp.searches.push(vueapp.product[i]);
+                        for (var j = 0; j < vueapp.searches.length; j++) {
+                            if (vueapp.product[i].id === vueapp.searches[j].id) {
+                                counter++;
+                            }
+                        }
+                        if (counter == 0) {
+                            vueapp.searches.push(vueapp.product[i]);
+                        }
+
                     }
-
                 }
-
-            }
-            else {
+            } else {
                 if (vueapp.search_lessons.toLowerCase() === vueapp.product[i].title.substr(0, vueapp.search_lessons.length).toLowerCase() ||
                     vueapp.search_lessons.toLowerCase() === vueapp.product[i].location.substr(0, vueapp.search_lessons.length).toLowerCase()) {
                     vueapp.searches.push(vueapp.product[i]);
