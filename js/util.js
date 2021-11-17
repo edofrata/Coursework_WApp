@@ -154,8 +154,8 @@ var vueapp = new Vue({
 
         // checks the phone number to be only numbers
         check_phone(phone) {
-            var digits = new RegExp(/^[0-9]{11}/gi);
-            return digits.test(phone);
+            var digits = new RegExp(/^\d+$/);
+            return digits.test(phone) && phone.length == 11;
         },
         //submit order function 
         submit_order() {

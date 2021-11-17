@@ -75,7 +75,7 @@
             <div class="lesson_box">
 
                 <!-- checkout button -->
-                  <button type="button" class="btn-checkout btn-primary" v-on:click="show_checkout()" > {{cartItemCount(cart)}} <img class="checkout-img" src="images/order.png"></button>
+                  <button type="button" class="btn-checkout btn-primary" v-on:click="show_checkout()" v-if="cart.length > 0 || show_products == false"> {{cartItemCount(cart)}} <img class="checkout-img" src="images/order.png"></button>
 
                   <div v-if="show_products">
                         <!-- sort button     -->
