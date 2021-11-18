@@ -4,6 +4,7 @@ var vueapp = new Vue({
         siteimage: 'images/After School Lessons Club-logos_transparent.png',
         show_products: true,
         search_On: false,
+        ascending: true,
         descending: false,
         cart: [],
         search_lessons: '',
@@ -73,9 +74,21 @@ var vueapp = new Vue({
         show_checkout() {
             this.show_products = this.show_products ? false : true;
         },
+        // ascending order
+        ascending_selected(){
+            if(!this.ascending){
+                this.ascending = true;
+                this.descending = false;
+            }
+            
+        },
         // descending order
         descending_selected: function () {
-            this.descending = !this.descending ? true : false;
+            if(!this.descending){
+                this.descending = true;
+                this.ascending = false;
+            }
+         
         },
         // sorting array function
         sort_products: function (sort) {

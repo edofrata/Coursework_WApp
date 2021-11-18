@@ -114,7 +114,13 @@
 .descending-sort{
   position: fixed;
   width:100px;
-  margin: -23px 0px 0px 125px;
+  margin: -20px 0px 0px 230px;
+}
+
+.ascending-sort{
+  position: fixed;
+  width: 100px;
+  margin: -20px 0px 0px 125px;
 }
 /* ------BUTTONS -------------- */
 .btn-group{

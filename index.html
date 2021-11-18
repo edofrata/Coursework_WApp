@@ -89,8 +89,12 @@
                         </template>
                         </div>
                       </div>
+                      <div class="ascending-sort" v-on:click="ascending_selected">
+                        <input type="radio" id="ascending" name="horns" checked>
+                        <label for="horns">Ascending</label>
+                      </div>
                       <div class="descending-sort" v-on:click="descending_selected">
-                        <input type="checkbox" id="horns" name="horns">
+                        <input type="radio" id="descending" name="horns">
                         <label for="horns">Descending</label>
                       </div>
 
@@ -273,7 +277,6 @@
         </div>
         <script src="js/lessons.js"></script>
         <script src="js/util.js"></script>
-        <script src="js/checkoutVal.js"></script>
         
     </body>
 </html>
