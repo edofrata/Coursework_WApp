@@ -158,7 +158,6 @@ var vueapp = new Vue({
         // function which sets the search on
         searchOn: function () {
             this.search_On = !this.search_On ? true : false;
-            console.log(this.search_On);
         },
 
         // checks the name to be only letters
@@ -200,19 +199,23 @@ var vueapp = new Vue({
 // function for searching 
 function search_lesson() {
     vueapp.searches = [];
-
+// in case the user inputs a space the search won't start
     if (vueapp.search_lessons !== '' && vueapp.search_lessons !== " ") {
         for (var i = 0; i < vueapp.product.length; i++) {
+             //counter for lessons found
             let counter = 0;
-            if (vueapp.search_lessons.length < 2) {
+            //condition for searching just characters in a word
+            if (vueapp.search_lessons.length < 2) { 
                 for (var k = 0; k < (vueapp.product[i].title.length + vueapp.product[i].location.length); k++) {
                     if (vueapp.search_lessons.toLowerCase() === vueapp.product[i].title.charAt(k).toLowerCase() ||
                         vueapp.search_lessons.toLowerCase() === vueapp.product[i].location.charAt(k).toLowerCase()) {
-                        for (var j = 0; j < vueapp.searches.length; j++) {
+                            //checking for double lessons
+                            for (var j = 0; j < vueapp.searches.length; j++) {
                             if (vueapp.product[i].id === vueapp.searches[j].id) {
                                 counter++;
                             }
                         }
+                        //if counter greater than 0 means that it has found duplicates
                         if (counter == 0) {
                             vueapp.searches.push(vueapp.product[i]);
                         }
@@ -220,6 +223,7 @@ function search_lesson() {
                     }
                 }
             } else {
+                // searching lesson by the amount of characters input from the user
                 if (vueapp.search_lessons.toLowerCase() === vueapp.product[i].title.substr(0, vueapp.search_lessons.length).toLowerCase() ||
                     vueapp.search_lessons.toLowerCase() === vueapp.product[i].location.substr(0, vueapp.search_lessons.length).toLowerCase()) {
                     vueapp.searches.push(vueapp.product[i]);
