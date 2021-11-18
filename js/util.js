@@ -79,6 +79,7 @@ var vueapp = new Vue({
             if(!this.ascending){
                 this.ascending = true;
                 this.descending = false;
+                this.sort_products('title')
             }
             
         },
@@ -87,6 +88,7 @@ var vueapp = new Vue({
             if(!this.descending){
                 this.descending = true;
                 this.ascending = false;
+                this.sort_products('title')
             }
          
         },
