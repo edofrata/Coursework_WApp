@@ -97,19 +97,19 @@
                         <input type="radio" id="descending" name="horns">
                         <label for="horns">Descending</label>
                       </div>
-
+                    <!-- Search Box input -->
                       <div class="search-box">
                         <input class = "search-text" v-model="search_lessons"  onkeyup="search_lesson()" type="text" placeholder = "Search Anything">
                       <a class = "search-btn">
                         <i class="fas fa-search"></i>
                       </a>
                     </div>
-                   
+                   <!-- If nothing has been found it will show this -->
                     <template v-if="searches.length <=0 && search_On">
                         <h2 class="No_result"> No results.</h2>
                      </template>
-                     
-                 <template v-else-if="search_On">
+                    <!-- if something will be found -->
+                 <template v-else-if="searches.length > 0 && search_On">
                     <div class="lesson_display">
                             <div class="lessons" v-for="(search, index) in searches" :key="index">
                                 <img v-bind:src="search.image">
@@ -123,7 +123,7 @@
                             </div>
                      </div>
                  </template>
-                 
+                 <!-- Show products -->
                  <template v-else> 
 
 <div class="container wrapper">
@@ -263,7 +263,7 @@
                              </div>
                             </div>
                             
-
+                        <!-- customer checkout  -->
                         </div>
                         <div class="customer-checkout">
                             <h2> Order Information </h2>

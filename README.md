@@ -1,4 +1,4 @@
 Full name : Edoardo Fratantonio
-Student Number: M00702510
-Github: https://edofrata.github.io/Coursework_WApp/
-Github repo: https://github.com/edofrata
+Student ID: M00702510
+Github Page: https://edofrata.github.io/Coursework_WApp/
+Github Repo: https://github.com/edofrata/Coursework_WApp
