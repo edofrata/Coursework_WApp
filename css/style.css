@@ -45,7 +45,7 @@
 
   width:1100px;
   height:550px;
-  overflow-y:scroll;
+  overflow-y:auto;
   margin: 20px 0px 0px 0px;
 }
 .cart{
@@ -56,7 +56,7 @@
 
     width:1100px;
     height:250px;
-    overflow-y:scroll;
+    overflow-y:auto;
     margin: 45px 0px 0px -10px;
 }
 /* adjusting image for the lessons insertion */

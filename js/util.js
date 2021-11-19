@@ -75,38 +75,38 @@ var vueapp = new Vue({
             this.show_products = this.show_products ? false : true;
         },
         // ascending order
-        ascending_selected(){
-            if(!this.ascending){
+        ascending_selected() {
+            if (!this.ascending) {
                 this.ascending = true;
                 this.descending = false;
                 this.sort_products('title')
             }
-            
+
         },
         // descending order
         descending_selected: function () {
-            if(!this.descending){
+            if (!this.descending) {
                 this.descending = true;
                 this.ascending = false;
                 this.sort_products('title')
             }
-         
+
         },
         // sorting array function
         sort_products: function (sort) {
-
-            for (var i = 0; i < this.product.length; i++) {
-                for (var k = (i + 1); k < this.product.length; k++) {
-                    let ascending = this.product[i][sort] > this.product[k][sort];
-                    let descending = this.product[i][sort] < this.product[k][sort];
-                    let bool = this.descending ? descending : ascending;
-                    if (bool) {
-                        var holder = this.product[i];
-                        this.product[i] = this.product[k];
-                        this.product[k] = holder;
+            let array = !this.search_On ? this.product : this.searches;
+                for (var i = 0; i < array.length; i++) {
+                    for (var k = (i + 1); k < array.length; k++) {
+                        let ascending = array[i][sort] > array[k][sort];
+                        let descending = array[i][sort] < array[k][sort];
+                        let bool = this.descending ? descending : ascending;
+                        if (bool) {
+                            var holder = array[i];
+                            array[i] = array[k];
+                            array[k] = holder;
+                        }
                     }
                 }
-            }
             // reloads root of vue
             vueapp.$forceUpdate();
         },
@@ -154,12 +154,6 @@ var vueapp = new Vue({
             return price;
         },
 
-
-        // function which sets the search on
-        searchOn: function () {
-            this.search_On = !this.search_On ? true : false;
-        },
-
         // checks the name to be only letters
         check_name(name) {
             var letters = new RegExp(/^[A-Za-z]+ [A-Za-z]+$/);
@@ -199,18 +193,19 @@ var vueapp = new Vue({
 // function for searching 
 function search_lesson() {
     vueapp.searches = [];
-// in case the user inputs a space the search won't start
-    if (vueapp.search_lessons !== '' && vueapp.search_lessons !== " ") {
+    // in case the user inputs a space the search won't start
+    if (!(/^\s*$/.test(vueapp.search_lessons))) {
+        vueapp.search_On = true;
         for (var i = 0; i < vueapp.product.length; i++) {
-             //counter for lessons found
+            //counter for lessons found
             let counter = 0;
             //condition for searching just characters in a word
-            if (vueapp.search_lessons.length < 2) { 
+            if (vueapp.search_lessons.length < 2) {
                 for (var k = 0; k < (vueapp.product[i].title.length + vueapp.product[i].location.length); k++) {
                     if (vueapp.search_lessons.toLowerCase() === vueapp.product[i].title.charAt(k).toLowerCase() ||
                         vueapp.search_lessons.toLowerCase() === vueapp.product[i].location.charAt(k).toLowerCase()) {
-                            //checking for double lessons
-                            for (var j = 0; j < vueapp.searches.length; j++) {
+                        //checking for double lessons
+                        for (var j = 0; j < vueapp.searches.length; j++) {
                             if (vueapp.product[i].id === vueapp.searches[j].id) {
                                 counter++;
                             }
@@ -230,5 +225,5 @@ function search_lesson() {
                 }
             }
         }
-    }
+    }else {vueapp.search_On = false;}
 }
