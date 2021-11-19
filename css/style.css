@@ -48,6 +48,12 @@
   overflow-y:auto;
   margin: 20px 0px 0px 0px;
 }
+
+.No_result{
+
+  font-size:50px;
+  margin: 225px 0px 0px 435px;
+}
 .cart{
 	margin : 20px 10px 50px 50px !important;
 

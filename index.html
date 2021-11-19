@@ -104,7 +104,12 @@
                         <i class="fas fa-search"></i>
                       </a>
                     </div>
-                 <template v-if="search_On">
+                   
+                    <template v-if="searches.length <=0 && search_On">
+                        <h2 class="No_result"> No results.</h2>
+                     </template>
+                     
+                 <template v-else-if="search_On">
                     <div class="lesson_display">
                             <div class="lessons" v-for="(search, index) in searches" :key="index">
                                 <img v-bind:src="search.image">
@@ -118,7 +123,7 @@
                             </div>
                      </div>
                  </template>
-
+                 
                  <template v-else> 
 
 <div class="container wrapper">
