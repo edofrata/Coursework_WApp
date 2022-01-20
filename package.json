@@ -4,7 +4,7 @@
   "description": "2nd Coursework Web App",
   "main": "js/server.js",
   "scripts": {
-    "start": "nodemon js/server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
