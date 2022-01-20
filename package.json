@@ -1,0 +1,26 @@
+{
+  "name": "2ndcw_webapp",
+  "version": "1.0.0",
+  "description": "2nd Coursework Web App",
+  "main": "js/server.js",
+  "scripts": {
+    "start": "nodemon js/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edofrata/2ndCW_WebApp.git"
+  },
+  "author": "Edoardo Fratantonio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edofrata/2ndCW_WebApp/issues"
+  },
+  "homepage": "https://github.com/edofrata/2ndCW_WebApp#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "mongodb": "^4.3.0",
+    "nodemon": "^2.0.15"
+  }
+}
