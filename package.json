@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edofrata/2ndCW_WebApp.git"
+    "url": "git+https://github.com/edofrata/Coursework_WApp.git"
   },
   "author": "Edoardo Fratantonio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/edofrata/2ndCW_WebApp/issues"
+    "url": "https://github.com/edofrata/Coursework_WApp/issues"
   },
-  "homepage": "https://github.com/edofrata/2ndCW_WebApp#readme",
+  "homepage": "https://github.com/edofrata/Coursework_WApp#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "ejs": "^3.1.6",

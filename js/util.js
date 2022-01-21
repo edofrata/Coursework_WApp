@@ -9,9 +9,7 @@ var vueapp = new Vue({
         cart: [],
         search_lessons: '',
         searches: [],
-        product: [math, english, computer_science,
-            music, italian, spanish,
-            geography, chemistry, biology, physics],
+        product: {},
         sortOptions: [
             { title: "Subject" },
             { location: "Location" },
@@ -24,6 +22,31 @@ var vueapp = new Vue({
             price: '',
             lessons_booked: [],
         }
+    },
+    created: 
+    // retrieving all the products and storing them to the array
+    function(){
+        fetch("https://cst3145-edo.herokuapp.com/collection/lessons", {
+        method: 'GET'
+        }).then(function(response){
+                response.json().then(
+                    function(json){
+                        vueapp.product = json;
+                    });
+            })
+    },
+    // adding a product
+    function(product){
+        fetch("https://cst3145-edo.herokuapp.com/collection/lessons", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(product),
+        }).then(response => response.json())
+        .then(responseJSON => {
+            console.log('Success: ', responseJSON);
+        })
     },
     methods: {
         // adds the product to the cart
