@@ -52,7 +52,7 @@ var vueapp = new Vue({
             })
         },
         Update : function(id, index_obj){
-            fetch("https://cst3145-edo.herokuapp.com/collection/" + id,{
+            fetch("https://cst3145-edo.herokuapp.com/collection/:" + id,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,7 +60,6 @@ var vueapp = new Vue({
                 body: JSON.stringify(vueapp.product[index_obj].available),
             })
             .then(response => response.json())
-    
         },
         // adds the product to the cart
         AddToCart: function (item) {
