@@ -38,19 +38,30 @@ var vueapp = new Vue({
     },
     methods: {
          // adding a product
-    Order: function(collection, order){
-        fetch("https://cst3145-edo.herokuapp.com/collection/" + collection, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(order),
-        })
-        .then(response => response.json())
-        .then(responseJSON => {
-            console.log('Success: ', responseJSON);
-        })
-    },
+        Order: function(collection, order){
+            fetch("https://cst3145-edo.herokuapp.com/collection/" + collection, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(order),
+            })
+            .then(response => response.json())
+            .then(responseJSON => {
+                console.log('Success: ', responseJSON);
+            })
+        },
+        Update : function(id){
+            fetch("https://cst3145-edo.herokuapp.com/collection/" + id,{
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(order),
+            })
+            .then(response => response.json())
+    
+        },
         // adds the product to the cart
         AddToCart: function (item) {
             if (this.search_On) {
@@ -196,7 +207,11 @@ var vueapp = new Vue({
             if (this.check_name(this.order.full_name) && this.check_phone(this.order.phone_number)) {
                 this.order.lessons_booked.push(this.cart);
                 this.order.price = this.shopping_price();
-                this.Order("orders", this.order);
+                for(let i =0; i < cart.length; i++){
+                    let booking = this.product.map(function(x) {return x._id; }).indexOf(_id[i]);
+                    this.Update(this.order.lessons_booked._id[i], booking);
+                }
+                this.Order("orders", this.order); //fetches the order to the orders collection
                 alert('SUCCESS! Your Order went through');
                 
                 // clearing up all variables
