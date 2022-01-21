@@ -1,7 +1,7 @@
 var vueapp = new Vue({
     el: '#app',
     data: {
-        siteimage: 'images/After School Lessons Club-logos_transparent.png',
+        siteimage: '/../images/logo.png',
         show_products: true,
         search_On: false,
         ascending: true,
@@ -32,6 +32,7 @@ var vueapp = new Vue({
                 response.json().then(
                     function(json){
                         vueapp.product = json;
+                        console.log(json);
                     });
             })
     },

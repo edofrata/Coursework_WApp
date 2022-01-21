@@ -3,7 +3,8 @@ var path = require("path");
 const { MongoClient } = require('mongodb');
 // mongodb personal uri
 const uri = "mongodb+srv://EdoFrata:riccardo1012@cluster0.x5s0g.mongodb.net/LessonsClub?retryWrites=true&w=majority";
-
+const port = process.env.PORT || 3000;
+const cors = require('cors');
 var app = express();
 var publicPath = path.join(__dirname, "../public/");
 app.use(express.static(publicPath));
@@ -62,7 +63,7 @@ app.get('/collection/:collection_name/:id'
 // update an object from the collection
 app.put('/collection/:collection_name/:id'
     , (request, response, next) => {
-        request.collection.update(
+        request.collection.updateOne(
             { _id: new ObjectID(request.params.id)},
             {$set:request.body},
             {safe:true, multi: false},
@@ -88,20 +89,12 @@ app.delete('/collection/:collection_name/:id'
 app.get('/', (request, response, next) => {
     response.send('You need to select a collection (/collection/nameOfCollection)');
 })
-app.get("/lessons", function (request, response) {
-
-});
-
-// comment
-app.get("/user", function (request, response) {
-
-});
 
 app.use(function (request, response) {
     response.status(404).send("This page has not been made yet!");
 });
 
-const port = process.env.PORT || 3000;
+
 app.listen(port, function () {
     console.log("Server started on port " + port);
 });
