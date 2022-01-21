@@ -18,8 +18,8 @@ app.use(function (request, response, next) {
     console.log("This is a : " + request.method + " request");
     console.log("Request date: " + new Date());
     // experimental
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "*");
     next();
 });
 
