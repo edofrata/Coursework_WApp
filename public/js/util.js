@@ -38,14 +38,15 @@ var vueapp = new Vue({
     },
     methods: {
          // adding a product
-    Order: function(collection){
+    Order: function(collection, order){
         fetch("https://cst3145-edo.herokuapp.com/collection/" + collection, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(vueapp.order),
-        }).then(response => response.json())
+            body: JSON.stringify(order),
+        })
+        .then(response => response.json())
         .then(responseJSON => {
             console.log('Success: ', responseJSON);
         })
@@ -207,7 +208,7 @@ var vueapp = new Vue({
                 for (var i = 0; i < this.product.length; i++) {
                     this.product[i].booking = 0;
                 }
-                this.Order("orders");
+                this.Order("orders", this.order);
                 this.show_checkout();
             } else { alert('ERROR! Something went wrong'); }
         }
