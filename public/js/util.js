@@ -209,7 +209,7 @@ var vueapp = new Vue({
                 this.order.price = this.shopping_price();
                 for(let i =0; i < this.cart.length; i++){
                     let booking = this.product.map(function(x) {return x._id; }).indexOf(this.cart[i]._id);
-                    this.Update(this.cart[i]._id, booking);
+                    this.Update(this.cart[i]._id.toString(), booking);
                 }
                 this.Order("orders", this.order); //fetches the order to the orders collection
                 alert('SUCCESS! Your Order went through');
