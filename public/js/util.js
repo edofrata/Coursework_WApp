@@ -51,13 +51,13 @@ var vueapp = new Vue({
                 console.log('Success: ', responseJSON);
             })
         },
-        Update : function(id){
+        Update : function(id, index_obj){
             fetch("https://cst3145-edo.herokuapp.com/collection/" + id,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(order),
+                body: JSON.stringify(vueapp.product[index_obj].available),
             })
             .then(response => response.json())
     
@@ -207,9 +207,9 @@ var vueapp = new Vue({
             if (this.check_name(this.order.full_name) && this.check_phone(this.order.phone_number)) {
                 this.order.lessons_booked.push(this.cart);
                 this.order.price = this.shopping_price();
-                for(let i =0; i < cart.length; i++){
-                    let booking = this.product.map(function(x) {return x._id; }).indexOf(_id[i]);
-                    this.Update(this.order.lessons_booked._id[i], booking);
+                for(let i =0; i < this.lessons_booked.length; i++){
+                    let booking = this.product.map(function(x) {return x._id; }).indexOf(this.lessons_booked[i]._id);
+                    this.Update(this.order.lessons_booked[i]._id, booking);
                 }
                 this.Order("orders", this.order); //fetches the order to the orders collection
                 alert('SUCCESS! Your Order went through');
