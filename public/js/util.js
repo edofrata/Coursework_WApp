@@ -207,9 +207,9 @@ var vueapp = new Vue({
             if (this.check_name(this.order.full_name) && this.check_phone(this.order.phone_number)) {
                 this.order.lessons_booked.push(this.cart);
                 this.order.price = this.shopping_price();
-                for(let i =0; i < this.lessons_booked.length; i++){
-                    let booking = this.product.map(function(x) {return x._id; }).indexOf(this.lessons_booked[i]._id);
-                    this.Update(this.order.lessons_booked[i]._id, booking);
+                for(let i =0; i < this.cart.length; i++){
+                    let booking = this.product.map(function(x) {return x._id; }).indexOf(this.cart[i]._id);
+                    this.Update(this.cart[i]._id, booking);
                 }
                 this.Order("orders", this.order); //fetches the order to the orders collection
                 alert('SUCCESS! Your Order went through');
