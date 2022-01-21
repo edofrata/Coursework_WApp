@@ -52,7 +52,7 @@ var vueapp = new Vue({
             })
         },
         Update : function(id, index_obj){
-            fetch("https://cst3145-edo.herokuapp.com/collection/lessons/:" + id,{
+            fetch("https://cst3145-edo.herokuapp.com/collection/lessons/" + id,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
