@@ -54,7 +54,7 @@ var vueapp = new Vue({
         AddToCart: function (item) {
             if (this.search_On) {
                 for (var i = 0; i < this.product.length; i++) {
-                    if (this.searches[item].id === this.product[i].id) { this.no_double(i); }
+                    if (this.searches[item]._id === this.product[i]._id) { this.no_double(i); }
                 }
             } else { this.no_double(item); }
 
@@ -67,7 +67,7 @@ var vueapp = new Vue({
             if (this.cart.length > 0) {
                 for (let i = 0; i < this.cart.length; i++) {
                     // if the in the cart is equqal to the product sent means that it is already in the cart
-                    if (this.cart[i].id === this.product[item].id) {
+                    if (this.cart[i]._id === this.product[item]._id) {
                         count++;
                         this.product[item].spaces--;
                         this.product[item].booking++;
@@ -145,7 +145,7 @@ var vueapp = new Vue({
         //item remove and adds back the items
         item_remove(item) {
             for (var i = 0; i < this.product.length; i++) {
-                if (this.product[i].id === this.cart[item].id) {
+                if (this.product[i]._id === this.cart[item]._id) {
                     this.product[i].booking--;
                     this.product[i].spaces++;
                     if (this.product[i].booking < 1) {
@@ -230,7 +230,7 @@ function search_lesson() {
                         vueapp.search_lessons.toLowerCase() === vueapp.product[i].location.charAt(k).toLowerCase()) {
                         //checking for double lessons
                         for (var j = 0; j < vueapp.searches.length; j++) {
-                            if (vueapp.product[i].id === vueapp.searches[j].id) {
+                            if (vueapp.product[i]._id === vueapp.searches[j]._id) {
                                 counter++;
                             }
                         }
