@@ -57,7 +57,7 @@ var vueapp = new Vue({
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(vueapp.product[index_obj].available),
+                body: JSON.stringify(vueapp.product[index_obj].spaces),
             })
             .then(response => response.json())
         },
