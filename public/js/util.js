@@ -36,20 +36,20 @@ var vueapp = new Vue({
                     });
             })
     },
-    // adding a product
-    function(product){
-        fetch("https://cst3145-edo.herokuapp.com/collection/lessons", {
+    methods: {
+         // adding a product
+    Order: function(collection){
+        fetch("https://cst3145-edo.herokuapp.com/collection/" + collection, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(product),
+            body: JSON.stringify(vueapp.order),
         }).then(response => response.json())
         .then(responseJSON => {
             console.log('Success: ', responseJSON);
         })
     },
-    methods: {
         // adds the product to the cart
         AddToCart: function (item) {
             if (this.search_On) {
@@ -207,6 +207,7 @@ var vueapp = new Vue({
                 for (var i = 0; i < this.product.length; i++) {
                     this.product[i].booking = 0;
                 }
+                this.Order("orders");
                 this.show_checkout();
             } else { alert('ERROR! Something went wrong'); }
         }
