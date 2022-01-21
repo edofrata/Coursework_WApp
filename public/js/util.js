@@ -196,8 +196,9 @@ var vueapp = new Vue({
             if (this.check_name(this.order.full_name) && this.check_phone(this.order.phone_number)) {
                 this.order.lessons_booked.push(this.cart);
                 this.order.price = this.shopping_price();
-                this.orders_submitted.push(JSON.stringify(this.order));
+                this.Order("orders", this.order);
                 alert('SUCCESS! Your Order went through');
+                
                 // clearing up all variables
                 this.order.full_name = '';
                 this.order.phone_number = '';
@@ -208,12 +209,10 @@ var vueapp = new Vue({
                 for (var i = 0; i < this.product.length; i++) {
                     this.product[i].booking = 0;
                 }
-                this.Order("orders", this.order);
                 this.show_checkout();
             } else { alert('ERROR! Something went wrong'); }
         }
-    },
-    computed: {}
+    }
 });
 
 // function for searching 

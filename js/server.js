@@ -11,14 +11,15 @@ app.use(express.static(publicPath));
 
 // extract parameters from the request
 app.use(express.json());
-
+app.use(cors());
 // middleware which prints on console infos
 app.use(function (request, response, next) {
     console.log("Request IP: " + request.url);
     console.log("This is a : " + request.method + " request");
     console.log("Request date: " + new Date());
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "*");
+    // experimental
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     next();
 });
 
