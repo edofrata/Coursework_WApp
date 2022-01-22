@@ -64,9 +64,9 @@ app.get('/collection/:collection_name/:id'
 // update an object from the collection
 app.put('/collection/:collection_name/:id'
     , (request, response, next) => {
-        request.collection.updateOne(
+        request.collection.findOneAndUpdate(
             { _id: new ObjectID(request.params.id)},
-            {$set:request.body},
+            {$set: {spaces : request.body.spaces}},
             {safe:true, multi: false},
         (err, result) => {
             if (err) return next(err)

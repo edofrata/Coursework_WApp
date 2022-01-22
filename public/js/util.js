@@ -39,7 +39,7 @@ var vueapp = new Vue({
     methods: {
          // adding a product
         Order: function(collection, order){
-            fetch("https://cst3145-edo.herokuapp.com/collection/" + collection, {
+            fetch("/collection/" + collection, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,13 +52,13 @@ var vueapp = new Vue({
             })
         },
         Update : function(id, index_obj){
-            fetch("https://cst3145-edo.herokuapp.com/collection/lessons/" + id,{
+            console.log(" IAM INNNNN  FRONT")
+             fetch("/collection/lessons/" + id,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(vueapp.product[index_obj]),
-                
             })
             .then(response => response.json())
         },
@@ -209,7 +209,7 @@ var vueapp = new Vue({
                 this.order.price = this.shopping_price();
                 for(let i =0; i < this.cart.length; i++){
                     let booking = this.product.map(function(x) {return x._id; }).indexOf(this.cart[i]._id);
-                    this.Update(this.cart[i]._id.toString(), booking);
+                    this.Update(this.cart[i]._id, booking);
                 }
                 this.Order("orders", this.order); //fetches the order to the orders collection
                 alert('SUCCESS! Your Order went through');
