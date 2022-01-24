@@ -35,6 +35,7 @@ app.param('collection_name', (request, response, next, collection_name) => {
     return next();
 })
 
+
 // retrieving lessons from mongodb
 app.get('/collection/:collection_name', 
     (request, response, next) => {
@@ -73,6 +74,25 @@ app.put('/collection/:collection_name/:id'
             response.send((result.result === undefined) ? {msg : 'success'} : {msg:'error'})
         })
     })
+
+// search API
+app.get("/search/:lesson?", async function(request, response) {
+    // response.render
+    if (request.params.lesson && !(/^\s*$/.test(request.params.lesson))){
+        response.send(await mongoSearch(request.params.lesson));
+    } else {response.status(400).end();}
+});
+
+async function mongoSearch(string){ 
+    const value = string.toLowerCase();
+    const products = db.collection("lessons");
+    const search = x => { return {$or: [ {title: {'$regex': `${x}`, '$options': 'i'}}, {location:{'$regex': `${x}`, '$options': 'i'}} ]}; };
+
+    if (!(/^\s*$/.test(value))){
+        if(value.length < 2)    return  await products.find(search(".*("+value+").*")).project({ _id: 1}).toArray();
+        else                    return  await products.find(search("^("+value+").*" )).project({ _id: 1}).toArray();
+    }else return null;
+}
 
 // removing object with delete
 app.delete('/collection/:collection_name/:id'

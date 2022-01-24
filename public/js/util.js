@@ -1,3 +1,4 @@
+
 var vueapp = new Vue({
     el: '#app',
     data: {
@@ -26,13 +27,13 @@ var vueapp = new Vue({
     created: 
     // retrieving all the products and storing them to the array
     function(){
-        fetch("https://cst3145-edo.herokuapp.com/collection/lessons", {
+        fetch("collection/lessons", {
         method: 'GET'
         }).then(function(response){
                 response.json().then(
                     function(json){
                         vueapp.product = json;
-                        console.log(json);
+              
                     });
             })
     },
@@ -51,9 +52,9 @@ var vueapp = new Vue({
                 console.log('Success: ', responseJSON);
             })
         },
+        //fetch wich will update a lesson
         Update : function(id, index_obj){
-            console.log(" IAM INNNNN  FRONT")
-             fetch("/collection/lessons/" + id,{
+            fetch("/collection/lessons/" + id,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,6 +62,24 @@ var vueapp = new Vue({
                 body: JSON.stringify(vueapp.product[index_obj]),
             })
             .then(response => response.json())
+        },
+        async search_remote(lesson){
+            try{
+                return await fetch('/search/' + lesson, {
+                    method: 'GET'
+                }).then(function(response){ 
+                    return response.json().then(
+                        function(json){
+                            return json;
+                        });
+                }).catch((err) => {
+                    console.error(err);
+                    return false;
+                });
+            }catch(e){
+                console.error(e);
+                return false;
+            }
         },
         // adds the product to the cart
         AddToCart: function (item) {
@@ -226,12 +245,37 @@ var vueapp = new Vue({
                 }
                 this.show_checkout();
             } else { alert('ERROR! Something went wrong'); }
-        }
+        },
+       // searching method
+
+
     }
 });
-
 // function for searching 
-function search_lesson() {
+async function search_lesson() {
+    vueapp.search_On = vueapp.search_lessons.length > 0;
+    if(!vueapp.search_On){return;}
+
+    vueapp.searches = [];
+    const response = await vueapp.search_remote(vueapp.search_lessons);
+
+    if(!response){
+        search_local(vueapp.search_lessons);
+        return;
+    }
+
+    for( let j = 0; j < vueapp.product.length; j++){
+        for(let i = 0; i < response.length; i++){
+            if(vueapp.product[j]._id === response[i]._id ){
+                    vueapp.searches.push(vueapp.product[j]);      
+                }
+        }
+    }
+    
+}
+
+// searching in local
+function search_local(lesson){
     vueapp.searches = [];
     // in case the user inputs a space the search won't start
     if (!(/^\s*$/.test(vueapp.search_lessons))) {
@@ -254,7 +298,6 @@ function search_lesson() {
                         if (counter == 0) {
                             vueapp.searches.push(vueapp.product[i]);
                         }
-
                     }
                 }
             } else {
@@ -266,4 +309,8 @@ function search_lesson() {
             }
         }
     }else {vueapp.search_On = false;}
+
+
 }
+
+
