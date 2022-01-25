@@ -1,5 +1,21 @@
+var vueapp;
+var lessons = [];
+lesson_fetch();
 
-var vueapp = new Vue({
+async function lesson_fetch(){
+    await fetch("collection/lessons", {
+        method: 'GET'
+        }).then(function(response){
+                return response.json().then(
+                    function(json){
+                        lessons = json;
+                    });
+            })
+    startVue();
+ }
+
+function startVue(){
+  vueapp = new Vue({
     el: '#app',
     data: {
         siteimage: '/../images/logo.png',
@@ -24,18 +40,8 @@ var vueapp = new Vue({
             lessons_booked: [],
         }
     },
-    created: 
-    // retrieving all the products and storing them to the array
-    function(){
-        fetch("collection/lessons", {
-        method: 'GET'
-        }).then(function(response){
-                response.json().then(
-                    function(json){
-                        vueapp.product = json;
-              
-                    });
-            })
+   created(){
+            this.product = lessons.slice();
     },
     methods: {
          // adding a product
@@ -272,8 +278,8 @@ async function search_lesson() {
         }
     }
     
+    }
 }
-
 // searching in local
 function search_local(lesson){
     vueapp.searches = [];
