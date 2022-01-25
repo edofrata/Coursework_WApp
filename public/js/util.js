@@ -257,6 +257,8 @@ function startVue(){
 
     }
 });
+    }
+
 // function for searching 
 async function search_lesson() {
     vueapp.search_On = vueapp.search_lessons.length > 0;
@@ -278,7 +280,6 @@ async function search_lesson() {
         }
     }
     
-    }
 }
 // searching in local
 function search_local(lesson){
