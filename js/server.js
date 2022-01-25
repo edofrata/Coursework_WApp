@@ -2,7 +2,7 @@ var express = require("express");
 var path = require("path");
 const { MongoClient } = require('mongodb');
 // mongodb personal uri
-const uri = "mongodb+srv://EdoFrata:riccardo1012@cluster0.x5s0g.mongodb.net/LessonsClub?retryWrites=true&w=majority";
+const uri = "mongodb+srv://EdoFrata:mdxWebapp@cluster0.x5s0g.mongodb.net/LessonsClub?retryWrites=true&w=majority";
 const port = process.env.PORT || 3000;
 const cors = require('cors');
 var app = express();
