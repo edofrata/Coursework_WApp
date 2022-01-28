@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "d2c8b920-514c-45cf-bcef-d77f9b6d2489",
+		"name": "lessonsClub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retrieve Lessons/orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cst3145-edo.herokuapp.com/collection/orders",
+					"protocol": "https",
+					"host": [
+						"cst3145-edo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"collection",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add lesson/order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"title\": \"Comp-S\",\n        \"location\": \"Barnet\",\n        \"price\": 150,\n        \"image\": \"images/binary-code.png\",\n        \"spaces\": 13,\n        \"booking\": 0\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cst3145-edo.herokuapp.com/collection/lessons",
+					"protocol": "https",
+					"host": [
+						"cst3145-edo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"collection",
+						"lessons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update lesson/orders",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"title\": \"Chemistry\",\n        \"location\": \"Leicester Square\",\n        \"price\": 115,\n        \"image\": \"images/chemistry.png\",\n        \"spaces\": 10,\n        \"booking\": 0\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cst3145-edo.herokuapp.com/collection/lessons/61e9dd8b75c0af320f4b6cfc",
+					"protocol": "https",
+					"host": [
+						"cst3145-edo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"collection",
+						"lessons",
+						"61e9dd8b75c0af320f4b6cfc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a lesson/order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cst3145-edo.herokuapp.com/collection/lessons/61e9dd8b75c0af320f4b6cfe",
+					"protocol": "https",
+					"host": [
+						"cst3145-edo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"collection",
+						"lessons",
+						"61e9dd8b75c0af320f4b6cfe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

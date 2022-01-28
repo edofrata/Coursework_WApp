@@ -1,0 +1,126 @@
+[{
+  "_id": {
+    "$oid": "61ef37d7f7ac85e6503dfd4c"
+  },
+  "full_name": "John Fui",
+  "phone_number": "07865654568",
+  "price": 630,
+  "lessons_booked": [
+    [
+      {
+        "_id": "61e9dd8b75c0af320f4b6d03",
+        "title": "Chemistry",
+        "location": "Leicester Square",
+        "price": 115,
+        "image": "images/chemistry.png",
+        "spaces": 14,
+        "booking": 2
+      },
+      {
+        "_id": "61e9dd8b75c0af320f4b6d04",
+        "title": "Biology",
+        "location": "South Kensington",
+        "price": 110,
+        "image": "images/biology.png",
+        "spaces": 13,
+        "booking": 2
+      },
+      {
+        "_id": "61e9dd8b75c0af320f4b6cfd",
+        "title": "English",
+        "location": "Hendon",
+        "price": 90,
+        "image": "images/english.png",
+        "spaces": 15,
+        "booking": 2
+      }
+    ]
+  ]
+},{
+  "_id": {
+    "$oid": "61ef3fc925c991da6d080fc0"
+  },
+  "full_name": "Trevor Tenth",
+  "phone_number": "06347289227",
+  "price": 390,
+  "lessons_booked": [
+    [
+      {
+        "_id": "61e9dd8b75c0af320f4b6cfe",
+        "title": "Comp-S",
+        "location": "Barnet",
+        "price": 150,
+        "image": "images/binary-code.png",
+        "spaces": 11,
+        "booking": 2
+      },
+      {
+        "_id": "61e9dd8b75c0af320f4b6cfd",
+        "title": "English",
+        "location": "Hendon",
+        "price": 90,
+        "image": "images/english.png",
+        "spaces": 14,
+        "booking": 1
+      }
+    ]
+  ]
+},{
+  "_id": {
+    "$oid": "61f07a50355c9cb5a0abaae0"
+  },
+  "full_name": "Edoardo Fratantonio",
+  "phone_number": "07382728928",
+  "price": 380,
+  "lessons_booked": [
+    [
+      {
+        "_id": "61e9dd8b75c0af320f4b6d00",
+        "title": "Italian",
+        "location": "Tottenham",
+        "price": 80,
+        "image": "images/italian.png",
+        "spaces": 16,
+        "booking": 3
+      },
+      {
+        "_id": "61e9dd8b75c0af320f4b6d01",
+        "title": "Spanish",
+        "location": "Ealing",
+        "price": 70,
+        "image": "images/spanish-language.png",
+        "spaces": 16,
+        "booking": 2
+      }
+    ]
+  ]
+},{
+  "_id": {
+    "$oid": "61f07a88355c9cb5a0abaae1"
+  },
+  "full_name": "Nicole Jones",
+  "phone_number": "03673989829",
+  "price": 370,
+  "lessons_booked": [
+    [
+      {
+        "_id": "61e9dd8b75c0af320f4b6d04",
+        "title": "Biology",
+        "location": "South Kensington",
+        "price": 110,
+        "image": "images/biology.png",
+        "spaces": 11,
+        "booking": 2
+      },
+      {
+        "_id": "61e9dd8b75c0af320f4b6cfe",
+        "title": "Comp-S",
+        "location": "Barnet",
+        "price": 150,
+        "image": "images/binary-code.png",
+        "spaces": 10,
+        "booking": 1
+      }
+    ]
+  ]
+}]

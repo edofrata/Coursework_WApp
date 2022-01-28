@@ -1,83 +1,101 @@
-{
-    "math": {
-
-        "title": "Math",
-        "location": "Canada Water",
-        "price": 100,
-        "image": "images/maths.png",
-        "spaces": 10,
-        "booking": 0
-    },
-    "english": {
-        "title": "English",
-        "location": "Hendon",
-        "price": 90,
-        "image": "images/english.png",
-        "spaces": 7,
-        "booking": 0
-    },
-    "computer_science": {
-        "title": "CS",
-        "location": "Barnet",
-        "price": 130,
-        "image": "images/binary-code.png",
-        "spaces": 12,
-        "booking": 0
-    },
-    "music ": {
-        "title": "Music",
-        "location": "Camden",
-        "price": 80,
-        "image": "images/music-notes.png",
-        "spaces": 8,
-        "booking": 0
-    },
-    "italian": {
-        "title": "Italian",
-        "location": "Tottenham",
-        "price": 80,
-        "image": "images/italian.png",
-        "spaces": 9,
-        "booking": 0
-    },
-    "spanish": {
-        "title": "Spanish",
-        "location": "Ealing",
-        "price": 70,
-        "image": "images/spanish-language.png",
-        "spaces": 5,
-        "booking": 0
-    },
-    "geography": {
-        "title": "Geography",
-        "location": "Enfield",
-        "price": 90,
-        "image": "images/geography.png",
-        "spaces": 12,
-        "booking": 0
-    },
-    "chemistry": {
-        "title": "Chemistry",
-        "location": "Leicester Square",
-        "price": 115,
-        "image": "images/chemistry.png",
-        "spaces": 10,
-        "booking": 0
-    },
-    "biology": {
-        "title": "Biology",
-        "location": "South Kensington",
-        "price": 110,
-        "image": "images/biology.png",
-        "spaces": 11,
-        "booking": 0
-    },
-    "physics": {
-        "title": "Physics",
-        "location": "Chelsea",
-        "price": 150,
-        "image": "images/physics.png",
-        "spaces": 15,
-        "booking": 0
-    }
-}
+[{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6cfc"
+  },
+  "title": "Math",
+  "location": "Canada Water",
+  "price": 100,
+  "image": "images/maths.png",
+  "spaces": 15,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6cfd"
+  },
+  "title": "English",
+  "location": "Hendon",
+  "price": 90,
+  "image": "images/english.png",
+  "spaces": 14,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6cfe"
+  },
+  "title": "Comp-S",
+  "location": "Barnet",
+  "price": 150,
+  "image": "images/binary-code.png",
+  "spaces": 10,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6cff"
+  },
+  "title": "Music",
+  "location": "Camden",
+  "price": 80,
+  "image": "images/music-notes.png",
+  "spaces": 15,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6d00"
+  },
+  "title": "Italian",
+  "location": "Tottenham",
+  "price": 80,
+  "image": "images/italian.png",
+  "spaces": 16,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6d01"
+  },
+  "title": "Spanish",
+  "location": "Ealing",
+  "price": 70,
+  "image": "images/spanish-language.png",
+  "spaces": 16,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6d02"
+  },
+  "title": "Geography",
+  "location": "Enfield",
+  "price": 90,
+  "image": "images/geography.png",
+  "spaces": 15,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6d03"
+  },
+  "title": "Chemistry",
+  "location": "Leicester Square",
+  "price": 115,
+  "image": "images/chemistry.png",
+  "spaces": 14,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6d04"
+  },
+  "title": "Biology",
+  "location": "South Kensington",
+  "price": 110,
+  "image": "images/biology.png",
+  "spaces": 11,
+  "booking": 0
+},{
+  "_id": {
+    "$oid": "61e9dd8b75c0af320f4b6d05"
+  },
+  "title": "Physics",
+  "location": "Chelsea",
+  "price": 150,
+  "image": "images/physics.png",
+  "spaces": 17,
+  "booking": 0
+}]
