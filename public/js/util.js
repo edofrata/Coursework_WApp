@@ -54,9 +54,6 @@ function startVue(){
                 body: JSON.stringify(order),
             })
             .then(response => response.json())
-            .then(responseJSON => {
-                console.log('Success: ', responseJSON);
-            })
         },
         //fetch wich will update a lesson
         Update : function(id, index_obj){
