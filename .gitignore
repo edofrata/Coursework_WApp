@@ -1,2 +1,5 @@
+# ignoring node_modules directory
 node_modules/
+
+# ignore .vscyde directoru
 .vscode/
