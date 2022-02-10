@@ -89,8 +89,9 @@ async function mongoSearch(string){
     const search = x => { return {$or: [ {title: {'$regex': `${x}`, '$options': 'i'}}, {location:{'$regex': `${x}`, '$options': 'i'}} ]}; };
 
     if (!(/^\s*$/.test(value))){
-        if(value.length < 2)    return  await products.find(search(".*("+value+").*")).project({ _id: 1}).toArray();
-        else                    return  await products.find(search("^("+value+").*" )).project({ _id: 1}).toArray();
+        // if(value.length < 2)    
+        return  await products.find(search(".*("+value+").*")).project({ _id: 1}).toArray();
+        // else                    return  await products.find(search("^("+value+").*" )).project({ _id: 1}).toArray();
     }else return null;
 }
 
