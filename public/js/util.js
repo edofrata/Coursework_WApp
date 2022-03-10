@@ -17,7 +17,8 @@ async function lesson_fetch(){
 function startVue(){
   vueapp = new Vue({
     el: '#app',
-    data: {
+    data() {
+    return {
         siteimage: '/../images/logo.png',
         show_products: true,
         search_On: false,
@@ -28,16 +29,17 @@ function startVue(){
         searches: [],
         product: {},
         sortOptions: [
-            { title: "Subject" },
-            { location: "Location" },
-            { price: "Price" },
-            { spaces: "Availability" }],
+            {     title     : "Subject"         },
+            {     location  : "Location"        },
+            {     price     : "Price"           },
+            {     spaces    : "Availability"    }],
         orders_submitted: [],
         order: {
             full_name: '',
             phone_number: '',
             price: '',
             lessons_booked: [],
+            }
         }
     },
    created(){
